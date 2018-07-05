@@ -1,20 +1,19 @@
 {
   "name": "parcel-reactjs",
   "version": "1.0.0",
-  "description": "A minimal React.js boilerplate with parcel as bundler",
+  "description": "Sistema de egressos UFGDr",
   "main": "index.js",
   "scripts": {
     "start": "parcel ./src/index.html"
   },
-  "keywords": [
-    "parcel",
-    "react"
-  ],
-  "author": "“Robin <“wrobin@gmx.net”> (https://www.robinwieruch.de)",
+  "author": "Herlon Aguiar, Jeovano Coutinho",
   "license": "MIT",
   "dependencies": {
+    "immutable": "^3.8.2",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
   },
   "devDependencies": {
     "parcel-bundler": "^1.6.1"
