@@ -41,7 +41,7 @@ export default function egresses (state = initialState, action) {
 
   switch (action.type) {
     /**
-     * Payload: { name: string, course: string, ingress_year: number, egress_year: number }
+     * payload: { name: string, course: string, ingress_year: number, egress_year: number }
      * `id` is auto created
      */
     case 'EGRESSES_INSERT':
@@ -51,6 +51,10 @@ export default function egresses (state = initialState, action) {
       list = list.push(fromJS(data).merge(model))
 
       return state.set('list', list)
+    
+    /**
+     * payload: uuid
+     */
     case 'EGRESSES_REMOVE':
       list = state.get('list').filter((egress) => egress.get('id') !== action.payload)
       return state.set('list', list)

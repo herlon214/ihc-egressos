@@ -6,10 +6,3 @@
 * `cd ihc-egressos`
 * `npm install`
 * `npm start`
-
-## Reducers
-
-#### Egresses
-|Action|Payload|Description|
-|------|-------|-----------|
-|
