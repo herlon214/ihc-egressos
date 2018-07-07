@@ -1,12 +1,15 @@
-# parcel-react
-
-[![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/)
-
-A minimal React.js boilerplate with [parcel as bundler](https://github.com/parcel-bundler/parcel). Parcel is an alternative web application bundler to Webpack. Read more about it: [Getting started with React and Parcel](https://www.robinwieruch.de/parcel-react-setup/).
+# IHC-Egressos
 
 ## Installation
 
-* `git clone git@github.com:rwieruch/parcel-react.git`
-* `cd parcel-react`
+* `git clone git@github.com:herlon214/ihc-egressos.git`
+* `cd ihc-egressos`
 * `npm install`
 * `npm start`
+
+## Reducers
+
+#### Egresses
+|Action|Payload|Description|
+|------|-------|-----------|
+|
