@@ -9,6 +9,12 @@ const roles = {
   'Egress': 'Egress'
 }
 
+// User to keep namespaces consistency
+const actions = {
+  EGRESSES_INSERT: 'EGRESSES_INSERT',
+  EGRESSES_REMOVE: 'EGRESSES_REMOVE'
+}
+
 const initialState = Map({
   actual: Map(), // For view or edit
   filter: Map({ name: null, ingress_year: null, course: null }), // For filter query
@@ -49,7 +55,7 @@ const initialState = Map({
 })
 
 // Export some vars to keep the consistency between reducers
-export { initialState, roles }
+export { initialState, roles, actions }
 
 export default function reducer (state = initialState, action) {
   let list
@@ -59,7 +65,7 @@ export default function reducer (state = initialState, action) {
      * payload: { name: string, course: string, ingress_year: number, egress_year: number }
      * `id` is auto created
      */
-    case 'EGRESSES_INSERT':
+    case actions.EGRESSES_INSERT:
       const data = action.payload
       const model = { id: uuid() }
       list = state.get('list')
@@ -70,7 +76,7 @@ export default function reducer (state = initialState, action) {
     /**
      * payload: uuid
      */
-    case 'EGRESSES_REMOVE':
+    case actions.EGRESSES_REMOVE:
       list = state.get('list').filter((item) => item.get('id') !== action.payload)
       return state.set('list', list)
 

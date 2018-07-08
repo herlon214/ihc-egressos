@@ -43,8 +43,14 @@ const initialState = Map({
   ]) // List of colleges
 })
 
+// Used to keep namespaces consistency
+const actions = {
+  COLLEGES_INSERT: 'COLLEGES_INSERT',
+  COLLEGES_REMOVE: 'COLLEGES_REMOVE'
+}
+
 // Export some vars to keep the consistency between reducers
-export { initialState }
+export { initialState, actions }
 
 export default function reducer (state = initialState, action) {
   let list
@@ -54,7 +60,7 @@ export default function reducer (state = initialState, action) {
      * payload: { name: string }
      * `id` is auto created
      */
-    case 'COLLEGES_INSERT':
+    case actions.COLLEGES_INSERT:
       const data = action.payload
       const model = { id: uuid() }
       list = state.get('list')
@@ -65,7 +71,7 @@ export default function reducer (state = initialState, action) {
     /**
      * payload: uuid
      */
-    case 'COLLEGES_REMOVE':
+    case actions.COLLEGES_REMOVE:
       list = state.get('list').filter((item) => item.get('id') !== action.payload)
       return state.set('list', list)
 
