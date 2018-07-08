@@ -1,12 +1,13 @@
-import reducer from './egresses'
+import reducer, { roles } from './users'
 
-test(`must insert a new egress`, () => {
+test(`must insert a new user`, () => {
   const state = reducer(undefined , {})
   const action = {
     type: 'EGRESSES_INSERT',
     payload: {
       name: 'Testing',
       course: 'Testing',
+      role: roles.Egress,
       ingress_year: 2014,
       egress_year: 2028
     }
@@ -16,7 +17,7 @@ test(`must insert a new egress`, () => {
   expect(result.get('list').size).toBe(5)
 })
 
-test(`must remove a egress`, () => {
+test(`must remove a user`, () => {
   const state = reducer(undefined , {})
   const action = {
     type: 'EGRESSES_REMOVE',

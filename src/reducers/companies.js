@@ -1,25 +1,24 @@
 // Libs
 import { Map, List, fromJS } from 'immutable'
-import uuid from 'uuid';
 
 const initialState = Map({
   list: List([
     Map({
-      id: uuid(),
+      id: '',
       name: 'Soft.Brasil LTDA.',
       fantasy_name: 'Soft Brasil',
       national_register_number: '20.185.688/7945-870',
       email: 'soft_brasil@gmail.com'
     }),
     Map({
-      id: uuid(),
+      id: 'uuid()',
       name: 'DOARE GESTAO FINANCEIRA LTDA',
       fantasy_name: 'DOARE DOACOES',
       national_register_number: '17.094.702/0001-84',
       email: 'ruy@doare.org'
     }),
     Map({
-      id: uuid(),
+      id: 'uuid()',
       name: 'ZZN Internet Media Group Ltda',
       fantasy_name: 'Reduza',
       national_register_number: '16.725.212/0001-76',
@@ -37,7 +36,7 @@ export default function reducer (state = initialState, action) {
      */
     case 'COMPANIES_INSERT':
       const data = action.payload
-      const model = { id: uuid() }
+      const model = { id: 'uuid()' }
       let list = state.get('list')
       list = list.push(fromJS(data).merge(model))
 
@@ -68,3 +67,7 @@ export default function reducer (state = initialState, action) {
       return state
   }
 }
+
+
+// Export some vars to keep the consistency between reducers
+// export { initialState }

@@ -2,7 +2,6 @@
 import React, { Component } from 'react'
 
 // Components
-import Default from './components/Default'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Main from './components/Main'

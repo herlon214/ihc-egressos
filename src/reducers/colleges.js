@@ -43,6 +43,9 @@ const initialState = Map({
   ]) // List of colleges
 })
 
+// Export some vars to keep the consistency between reducers
+export { initialState }
+
 export default function reducer (state = initialState, action) {
 
   switch (action.type) {
