@@ -1,5 +1,5 @@
 // Libs
-import { Map, List, fromJS, merge } from 'immutable'
+import { Map, List, fromJS } from 'immutable'
 import uuid from 'uuid';
 
 const initialState = Map({
@@ -37,7 +37,7 @@ const initialState = Map({
   ]) // List of all egresses
 })
 
-export default function egresses (state = initialState, action) {
+export default function reducer (state = initialState, action) {
 
   switch (action.type) {
     /**
@@ -56,7 +56,7 @@ export default function egresses (state = initialState, action) {
      * payload: uuid
      */
     case 'EGRESSES_REMOVE':
-      list = state.get('list').filter((egress) => egress.get('id') !== action.payload)
+      list = state.get('list').filter((item) => item.get('id') !== action.payload)
       return state.set('list', list)
     default:
       return state
