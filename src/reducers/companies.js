@@ -29,6 +29,8 @@ const initialState = Map({
 
 
 export default function reducer (state = initialState, action) {
+  let list
+
   switch (action.type) {
     /**
      * payload: { name: string, fantasy_name: string, national_register_number: string, email: string }
@@ -37,7 +39,7 @@ export default function reducer (state = initialState, action) {
     case 'COMPANIES_INSERT':
       const data = action.payload
       const model = { id: 'uuid()' }
-      let list = state.get('list')
+      list = state.get('list')
       list = list.push(fromJS(data).merge(model))
 
       return state.set('list', list)

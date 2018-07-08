@@ -2,7 +2,6 @@
 import { Map, List, fromJS } from 'immutable'
 import uuid from 'uuid'
 
-
 const status = {
   'open': 'open',
   'waiting': 'waiting',
@@ -36,6 +35,7 @@ const initialState = Map({
 export { initialState, status }
 
 export default function reducer (state = initialState, action) {
+  let list
 
   switch (action.type) {
     /**
@@ -45,7 +45,7 @@ export default function reducer (state = initialState, action) {
     case 'FORUM_INSERT':
       const data = action.payload
       const model = { id: uuid() }
-      let list = state.get('list')
+      list = state.get('list')
       list = list.push(fromJS(data).merge(model))
 
       return state.set('list', list)
@@ -56,6 +56,7 @@ export default function reducer (state = initialState, action) {
     case 'COLLEGES_REMOVE':
       list = state.get('list').filter((item) => item.get('id') !== action.payload)
       return state.set('list', list)
+
     default:
       return state
   }
