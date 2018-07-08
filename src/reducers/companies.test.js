@@ -1,9 +1,9 @@
-import reducer from './companies'
+import reducer, { actions } from './companies'
 
 test(`must insert a new company`, () => {
   const state = reducer(undefined , {})
   const action = {
-    type: 'COMPANIES_INSERT',
+    type: actions.COMPANIES_INSERT,
     payload: {
       name: 'MOOLAB-COMERCIO E DESENVOLVIMENTO DE APLICATIVOS LTDA. - ME',
       fantasy_name: 'Planejei',
@@ -19,7 +19,7 @@ test(`must insert a new company`, () => {
 test(`must remove a company`, () => {
   const state = reducer(undefined , {})
   const action = {
-    type: 'COLLEGES_REMOVE',
+    type: actions.COLLEGES_REMOVE,
     payload: state.getIn(['list', 0, 'id'])
   }
 
@@ -30,7 +30,7 @@ test(`must remove a company`, () => {
 test(`must update a company`, () => {
   const state = reducer(undefined , {})
   const action = {
-    type: 'COMPANIES_UPDATE',
+    type: actions.COMPANIES_UPDATE,
     payload: {
       id: state.getIn(['list', 0, 'id']),
       fantasy_name: 'Soft Brasil Technology'

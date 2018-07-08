@@ -1,10 +1,10 @@
-import reducer from './forums'
+import reducer, { actions } from './forums'
 import { initialState as initialUsersState } from './users'
 
 test(`must insert a new forum`, () => {
   const state = reducer(undefined , {})
   const action = {
-    type: 'FORUM_INSERT',
+    type: actions.FORUM_INSERT,
     payload: {
       name: 'Engenharia da Computação',
     }
@@ -16,7 +16,7 @@ test(`must insert a new forum`, () => {
 test(`must remove a forum`, () => {
   const state = reducer(undefined , {})
   const action = {
-    type: 'FORUM_REMOVE',
+    type: actions.FORUM_REMOVE,
     payload: state.getIn(['list', 0, 'id'])
   }
 
@@ -27,7 +27,7 @@ test(`must remove a forum`, () => {
 test(`must insert a new comment`, () => {
   const state = reducer(undefined , {})
   const action = {
-    type: 'FORUM_COMMENT_INSERT',
+    type: actions.FORUM_COMMENT_INSERT,
     payload: {
       topicId: state.getIn(['topics', 0, 'id']),
       authorId: initialUsersState.getIn(['list', 0, 'id']),
@@ -41,7 +41,7 @@ test(`must insert a new comment`, () => {
 test(`must remove a comment`, () => {
   const state = reducer(undefined , {})
   const action = {
-    type: 'FORUM_COMMENT_REMOVE',
+    type: actions.FORUM_COMMENT_REMOVE,
     payload: state.getIn(['comments', 0, 'id'])
   }
 
@@ -52,7 +52,7 @@ test(`must remove a comment`, () => {
 test(`must insert a new topic`, () => {
   const state = reducer(undefined , {})
   const action = {
-    type: 'FORUM_TOPIC_INSERT',
+    type: actions.FORUM_TOPIC_INSERT,
     payload: {
       forumId: state.getIn(['list', 0, 'id']),
       title: 'Artes Cênicas'
@@ -65,7 +65,7 @@ test(`must insert a new topic`, () => {
 test(`must remove a topic`, () => {
   const state = reducer(undefined , {})
   const action = {
-    type: 'FORUM_TOPIC_REMOVE',
+    type: actions.FORUM_TOPIC_REMOVE,
     payload: state.getIn(['topics', 0, 'id'])
   }
 

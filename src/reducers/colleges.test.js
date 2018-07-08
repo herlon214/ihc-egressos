@@ -1,9 +1,9 @@
-import reducer from './colleges'
+import reducer, { actions } from './colleges'
 
 test(`must insert a new college`, () => {
   const state = reducer(undefined , {})
   const action = {
-    type: 'COLLEGES_INSERT',
+    type: actions.COLLEGES_INSERT,
     payload: {
       name: 'Testing',
     }
@@ -16,7 +16,7 @@ test(`must insert a new college`, () => {
 test(`must remove a college`, () => {
   const state = reducer(undefined , {})
   const action = {
-    type: 'COLLEGES_REMOVE',
+    type: actions.COLLEGES_REMOVE,
     payload: state.getIn(['list', 0, 'id'])
   }
 
