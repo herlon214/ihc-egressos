@@ -44,7 +44,7 @@ const initialState = Map({
   ])
 })
 
-// Export default state to keep the consistency between reducers
+// Export to keep the consistency between reducers
 export { initialState, status, actions }
 
 export default function reducer (state = initialState, action) {
