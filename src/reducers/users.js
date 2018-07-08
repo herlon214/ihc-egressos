@@ -11,8 +11,8 @@ const roles = {
 
 // User to keep namespaces consistency
 const actions = {
-  EGRESSES_INSERT: 'EGRESSES_INSERT',
-  EGRESSES_REMOVE: 'EGRESSES_REMOVE'
+  EGRESSES_INSERT: 'EGRESSES_INSERT', // Inserts a new egress
+  EGRESSES_REMOVE: 'EGRESSES_REMOVE' // Remove a given egress
 }
 
 const initialState = Map({

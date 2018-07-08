@@ -45,8 +45,8 @@ const initialState = Map({
 
 // Used to keep namespaces consistency
 const actions = {
-  COLLEGES_INSERT: 'COLLEGES_INSERT',
-  COLLEGES_REMOVE: 'COLLEGES_REMOVE'
+  COLLEGES_INSERT: 'COLLEGES_INSERT', // Insert a new college
+  COLLEGES_REMOVE: 'COLLEGES_REMOVE' // Remove a given college
 }
 
 // Export some vars to keep the consistency between reducers

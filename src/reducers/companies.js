@@ -30,9 +30,9 @@ const initialState = Map({
 
 // Used to keep namespaces consistency
 const actions = {
-  COMPANIES_INSERT: 'COMPANIES_INSERT',
-  COMPANIES_REMOVE: 'COMPANIES_REMOVE',
-  COMPANIES_UPDATE: 'COMPANIES_UPDATE'
+  COMPANIES_INSERT: 'COMPANIES_INSERT', // Insert a new company
+  COMPANIES_REMOVE: 'COMPANIES_REMOVE', // Remove a given company
+  COMPANIES_UPDATE: 'COMPANIES_UPDATE', // Update a given company
 }
 
 // Export some vars to keep the consistency between reducers

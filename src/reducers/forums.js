@@ -6,12 +6,12 @@ import { initialState as initialUsersState } from './users'
 // Used to keep namespaces consistency
 const status = { open: 'open', waiting: 'waiting', closed: 'closed' }
 const actions = {
-  FORUM_INSERT: 'FORUM_INSERT',
-  FORUM_REMOVE: 'FORUM_REMOVE',
-  FORUM_COMMENT_INSERT: 'FORUM_COMMENT_INSERT',
-  FORUM_COMMENT_REMOVE: 'FORUM_COMMENT_REMOVE',
-  FORUM_TOPIC_INSERT: 'FORUM_TOPIC_INSERT',
-  FORUM_TOPIC_REMOVE: 'FORUM_TOPIC_REMOVE'
+  FORUM_INSERT: 'FORUM_INSERT', // Insert a new forum
+  FORUM_REMOVE: 'FORUM_REMOVE', // Remove a given forum
+  FORUM_COMMENT_INSERT: 'FORUM_COMMENT_INSERT', // Insert a new comment
+  FORUM_COMMENT_REMOVE: 'FORUM_COMMENT_REMOVE', // Remove a given comment
+  FORUM_TOPIC_INSERT: 'FORUM_TOPIC_INSERT', // Insert a new topic
+  FORUM_TOPIC_REMOVE: 'FORUM_TOPIC_REMOVE', // Remove a given topic
 }
 
 const [ firstForumId, firstTopicId, firstCommentId ] = [ uuid(), uuid(), uuid() ]
