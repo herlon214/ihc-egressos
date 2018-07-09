@@ -48,7 +48,7 @@ export default function reducer (state = initialState, action) {
      */
     case actions.COMPANIES_INSERT:
       const data = action.payload
-      const model = { id: 'uuid()' }
+      const model = { id: uuid() }
       list = state.get('list')
       list = list.push(fromJS(data).merge(model))
 
@@ -66,9 +66,7 @@ export default function reducer (state = initialState, action) {
      */
     case actions.COMPANIES_UPDATE:
       list = state.get('list').map((item) => {
-        if (item.get('id') === action.payload.id) {
-          return item.merge(action.payload)
-        }
+        if (item.get('id') === action.payload.id) return item.merge(action.payload)
 
         return item
       })

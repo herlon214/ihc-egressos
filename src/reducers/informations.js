@@ -22,7 +22,7 @@ const initialState = Map({
       status: status.closed,
       body: `Curabitur sodales ligula orci, ut viverra sapien laoreet eu. Donec dapibus neque odio, faucibus placerat turpis elementum et. In euismod mollis orci, vel viverra eros bibendum non. Integer aliquet, mauris finibus ornare mattis, metus felis pellentesque tortor, vitae blandit mauris urna non ex. Fusce aliquet blandit nisi, vel ultricies felis feugiat vitae. Integer cursus ligula ac nisl rutrum, ut semper dui iaculis. Cras egestas libero tristique tortor posuere, at congue diam fermentum.`
     }),
-  ])
+  ]), // List of informations
 })
 
 // Export to keep the consistency between reducers

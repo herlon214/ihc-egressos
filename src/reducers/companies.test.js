@@ -19,12 +19,12 @@ test(`must insert a new company`, () => {
 test(`must remove a company`, () => {
   const state = reducer(undefined , {})
   const action = {
-    type: actions.COLLEGES_REMOVE,
+    type: actions.COMPANIES_REMOVE,
     payload: state.getIn(['list', 0, 'id'])
   }
 
   const result = reducer(state, action)
-  expect(result.get('list').size).toBe(3)
+  expect(result.get('list').size).toBe(2)
 })
 
 test(`must update a company`, () => {
