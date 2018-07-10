@@ -9,5 +9,11 @@ University Egress System build with React, Redux, ImmutableJS, Material Design.
 * `npm install`
 * `npm start`
 
-## Reducers
+## User's informations
 
+|Name|CPF|Password|Role|
+|----|---|--------|----|
+|Herlon Aguiar|12345678900|123|Egress|
+|Jeovano Coutinho|12345678901|123|Administrator|
+|Andrei Mattos|12345678902|123|Coordinator|
+|Jone Arce|12345678903|123|Egress|

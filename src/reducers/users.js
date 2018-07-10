@@ -1,6 +1,6 @@
 // Libs
 import { Map, List, fromJS } from 'immutable'
-import uuid from 'uuid';
+import uuid from 'uuid'
 
 // User roles
 const roles = {
@@ -23,6 +23,8 @@ const initialState = Map({
       id: uuid(),
       name: 'Herlon Aguiar',
       course: 'Sistemas de Informação',
+      national_register_number: '12345678900',
+      password: '123',
       role: roles.Egress,
       ingress_year: 2014,
       egress_year: 2018
@@ -31,6 +33,8 @@ const initialState = Map({
       id: uuid(),
       name: 'Jeovano Coutinho',
       course: 'Sistemas de Informação',
+      national_register_number: '12345678901',
+      password: '123',
       role: roles.Administrator,
       ingress_year: 2014,
       egress_year: 2018
@@ -39,6 +43,8 @@ const initialState = Map({
       id: uuid(),
       name: 'Andrei Mattos',
       course: 'Artes Cênicas',
+      national_register_number: '12345678902',
+      password: '123',
       role: roles.Coordinator,
       ingress_year: 2012,
       egress_year: 2016
@@ -47,10 +53,12 @@ const initialState = Map({
       id: uuid(),
       name: 'Jone Arce',
       course: 'Agronomia',
+      national_register_number: '12345678903',
+      password: '123',
       role: roles.Egress,
       ingress_year: 2010,
       egress_year: 2014
-    }),
+    })
   ]) // List of all egresses
 })
 
