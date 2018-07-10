@@ -10,4 +10,3 @@ test(`must open a information`, () => {
   const result = reducer(state, action)
   expect(result.getIn(['list', 1, 'status'])).toBe('open')
 })
-

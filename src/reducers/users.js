@@ -99,7 +99,7 @@ export default function reducer (state = initialState, action) {
       return state.set('list', list)
 
     /**
-     * payload { register_number: string, password: string }
+     * payload { national_register_number: string, password: string }
      */
     case actions.USERS_LOGIN:
       const { payload } = action

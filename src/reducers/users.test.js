@@ -32,12 +32,17 @@ test(`must login a user`, () => {
   const state = reducer(undefined, {})
   const action = {
     type: actions.USERS_LOGIN,
-    payload: {
-      national_register_number: '12345678901',
-      password: '123'
-    }
+    payload: { national_register_number: '12345678901', password: '123' }
   }
 
   const result = reducer(state, action)
   expect(result.get('actual').get('name')).toBe('Jeovano Coutinho')
+})
+
+test(`must logout a user`, () => {
+  const state = reducer(undefined, {})
+  const action = { type: actions.USERS_LOGOUT }
+
+  const result = reducer(state, action)
+  expect(result.get('actual')).toBe(null)
 })
