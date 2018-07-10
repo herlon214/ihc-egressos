@@ -1,7 +1,7 @@
 import reducer, { roles, actions } from './users'
 
 test(`must insert a new user`, () => {
-  const state = reducer(undefined , {})
+  const state = reducer(undefined, {})
   const action = {
     type: actions.EGRESSES_INSERT,
     payload: {
@@ -18,7 +18,7 @@ test(`must insert a new user`, () => {
 })
 
 test(`must remove a user`, () => {
-  const state = reducer(undefined , {})
+  const state = reducer(undefined, {})
   const action = {
     type: actions.EGRESSES_REMOVE,
     payload: state.getIn(['list', 0, 'id'])
