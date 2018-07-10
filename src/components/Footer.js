@@ -15,7 +15,6 @@ const styles = theme => ({
   }
 });
 
-
 const Footer = ({ classes }) => (
   <div>
     <footer>
