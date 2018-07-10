@@ -112,7 +112,7 @@ export default function reducer (state = initialState, action) {
         return false
       })
 
-      if (match.length > 0) {
+      if (match.size > 0) {
         state = state.set('actual', match.get(0))
       } else {
         state = state.set('error', 'User or password not found')

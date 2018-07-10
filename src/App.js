@@ -1,5 +1,7 @@
 // Libs
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 // Components
 import Navbar from './components/Navbar'
@@ -10,7 +12,7 @@ class App extends Component {
   render () {
     return (
       <div>
-        <Navbar logged={false}/>
+        <Navbar logged={ this.props.user ? true : false }/>
         <Main />
         <Footer />
       </div>
@@ -18,4 +20,18 @@ class App extends Component {
   }
 }
 
-export default App
+const mapStateToProps = (state, ownProps) => {
+  return {
+    user: state.users.get('actual')
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {}
+}
+
+
+export default withRouter(connect (
+  mapStateToProps,
+  mapDispatchToProps
+)(App)) 

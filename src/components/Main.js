@@ -4,7 +4,7 @@ import React from 'react'
 
 // Components
 import { Paper, withStyles, Grid, Typography } from '@material-ui/core'
-import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import Login from './Login'
 
 const styles = theme => ({
@@ -28,18 +28,6 @@ const Home = ({ classes }) => (
     </Grid>
   </div>
 )
-
-// const Login = ({ classes }) => (
-//   <div>
-    // <Grid container className={classes.main}>
-    //   <Grid item xs={6}>
-    //     <Paper className={ classes.paper }>
-    //       <Typography style={{ padding: '1em', textAlign: 'center' }}> Login   </Typography>
-    //     </Paper>
-    //   </Grid>
-    // </Grid>
-//   </div>
-// )
 
 const Main = ({ classes }) => (
   <div>
