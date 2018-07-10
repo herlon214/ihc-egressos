@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 // Components 
 import { withStyles, Button, Typography, FormControl, InputLabel, Input, FormHelperText } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper'
+
 
 const styles = theme => ({
   main: {
@@ -84,9 +84,13 @@ class LoginForm extends Component {
     }
     this.setState({ fields })
   }
+
   onLogin (e) {
-    
+    e.preventDefault();
+    // console.log(this.state.fields)
+    this.props.onLogin(this.state.fields);
   }
+
   render() {
     const { classes } = this.props
     return (

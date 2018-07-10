@@ -12,7 +12,10 @@ class App extends Component {
   render () {
     return (
       <div>
-        <Navbar logged={ this.props.user ? true : false }/>
+        <Navbar
+          user={ this.props.user } 
+          logged={ this.props.user ? true : false }
+        />
         <Main />
         <Footer />
       </div>

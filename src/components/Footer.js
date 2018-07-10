@@ -2,7 +2,7 @@
 import React from 'react'
 
 // Components
-import { Grid, Paper, withStyles, Typography } from '@material-ui/core'
+import { Grid, withStyles, Typography } from '@material-ui/core'
 import indigo from '@material-ui/core/colors/indigo';
 
 const styles = theme => ({
