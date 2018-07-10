@@ -11,11 +11,11 @@ const roles = {
 
 // User to keep namespaces consistency
 const actions = {
-  EGRESS_ERROR_CLEAN: 'EGRESS_ERROR_CLEAN', // Clean the actual error
-  EGRESS_LOGIN: 'EGRESS_LOGIN', // Verify the user and if it's valid set the actual as it
-  EGRESS_LOGOUT: 'EGRESS_LOGOUT', // Logout the actual user
-  EGRESSES_INSERT: 'EGRESSES_INSERT', // Inserts a new egress
-  EGRESSES_REMOVE: 'EGRESSES_REMOVE' // Remove a given egress
+  USERS_ERROR_CLEAN: 'USERS_ERROR_CLEAN', // Clean the actual error
+  USERS_LOGIN: 'USERS_LOGIN', // Verify the user and if it's valid set the actual as it
+  USERS_LOGOUT: 'USERS_LOGOUT', // Logout the actual user
+  USERS_INSERT: 'USERS_INSERT', // Inserts a new egress
+  USERS_REMOVE: 'USERS_REMOVE' // Remove a given egress
 }
 
 const initialState = Map({
@@ -76,14 +76,14 @@ export default function reducer (state = initialState, action) {
     /**
      * payload: null
      */
-    case actions.EGRESS_ERROR_CLEAN:
+    case actions.USERS_ERROR_CLEAN:
       return state.set('error', '')
 
     /**
      * payload: { name: string, course: string, ingress_year: number, egress_year: number }
      * `id` is auto created
      */
-    case actions.EGRESSES_INSERT:
+    case actions.USERS_INSERT:
       const data = action.payload
       const model = { id: uuid() }
       list = state.get('list')
@@ -94,14 +94,14 @@ export default function reducer (state = initialState, action) {
     /**
      * payload: uuid
      */
-    case actions.EGRESSES_REMOVE:
+    case actions.USERS_REMOVE:
       list = state.get('list').filter((item) => item.get('id') !== action.payload)
       return state.set('list', list)
 
     /**
      * payload { register_number: string, password: string }
      */
-    case actions.EGRESS_LOGIN:
+    case actions.USERS_LOGIN:
       const { payload } = action
       const match = state.get('list').filter((user) => {
         if (
@@ -123,7 +123,7 @@ export default function reducer (state = initialState, action) {
     /**
      * payload: null
      */
-    case actions.EGRESS_LOGOUT:
+    case actions.USERS_LOGOUT:
       return state.set('actual', null)
 
     default:
