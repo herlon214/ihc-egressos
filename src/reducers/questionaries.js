@@ -7,7 +7,8 @@ import uuid from 'uuid'
 const actions = {
   QUESTIONARIES_INSERT: 'QUESTIONARIES_INSERT', // Insert a new questionary
   QUESTIONARIES_REMOVE: 'QUESTIONARIES_REMOVE', // Remove a created questionary
-  QUESTIONARIES_ANSWERS_INSERT: 'QUESTIONARIES_ANSWERS_INSERT' // Insert a new answer
+  QUESTIONARIES_ANSWERS_INSERT: 'QUESTIONARIES_ANSWERS_INSERT', // Insert a new answer
+  QUESTIONARIES_ANSWERS_REMOVE: 'QUESTIONARIES_ANSWERS_REMOVE' // Remove a answer
 }
 const firstQuestionaryId = uuid()
 const questionsIds = [ uuid(), uuid(), uuid() ]
@@ -72,7 +73,10 @@ export default function reducer (state = initialState, action) {
       data = action.payload
       model = {
         id: uuid(),
-        questions: action.payload.questions.map((question) => question.id = uuid() ) // Set id for each question
+        questions: action.payload.questions.map(question => {
+          question.id = uuid()
+          return question
+        }) // Set id for each question
       }
       list = state.get('list')
       list = list.push(fromJS(data).merge(model))
@@ -97,10 +101,18 @@ export default function reducer (state = initialState, action) {
     case actions.QUESTIONARIES_ANSWERS_INSERT:
       data = action.payload
       model = {
-        id: uuid(),
+        id: uuid()
       }
       answers = state.get('answers')
       answers = answers.push(fromJS(data).merge(model))
+
+      return state.set('answers', answers)
+
+    /**
+     * payload: uuid
+     */
+    case actions.QUESTIONARIES_ANSWERS_REMOVE:
+      answers = state.get('answers').filter(answer => answer.get('id') !== action.payload)
 
       return state.set('answers', answers)
 
