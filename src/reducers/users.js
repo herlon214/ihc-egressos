@@ -1,6 +1,7 @@
 // Libs
 import { Map, List, fromJS } from 'immutable'
 import uuid from 'uuid'
+import * as localStorage from 'localStorage'
 
 // User roles
 const roles = {
@@ -18,8 +19,10 @@ const actions = {
   USERS_REMOVE: 'USERS_REMOVE' // Remove a given egress
 }
 
+const localUser = localStorage.getItem('user')
+
 const initialState = Map({
-  actual: null, // For view or edit
+  actual: fromJS(JSON.parse(localUser !== 'undefined' ? localUser : 'null')), // For view or edit
   error: '', // Variable to show errors
   filter: Map({ name: null, ingress_year: null, course: null }), // For filter query
   list: List([
@@ -114,6 +117,7 @@ export default function reducer (state = initialState, action) {
 
       if (match.size > 0) {
         state = state.set('actual', match.get(0))
+        localStorage.setItem('user', JSON.stringify(match.get(0)))
       } else {
         state = state.set('error', 'Usuário ou senha não encontrado.')
       }
@@ -124,6 +128,7 @@ export default function reducer (state = initialState, action) {
      * payload: null
      */
     case actions.USERS_LOGOUT:
+      localStorage.setItem('user', undefined)
       return state.set('actual', null)
 
     default:

@@ -5,39 +5,31 @@ import React from 'react'
 import AdminMenu from './AdminMenu'
 import CoordinatorMenu from './CoordinatorMenu'
 import EgressMenu from './EgressMenu'
+import GuestMenu from './GuestMenu'
 
 const UserMenu = ({ user }) => {
+  console.log(user)
   if (user) {
     switch (user.get('role')) {
       case 'Administrator':
         return (
-          <div>
-            <AdminMenu />
-          </div>
+          <AdminMenu />
         )
 
       case 'Coordinator':
         return (
-          <div>
-            <CoordinatorMenu />
-          </div>
+          <CoordinatorMenu />
         )
 
       case 'Egress':
         return (
-          <div>
-            <EgressMenu />
-          </div>
+          <EgressMenu />
         )
 
       default:
     }
   } else {
-    return (
-      <div>
-        {''}
-      </div>
-    )
+    return <GuestMenu />
   }
 }
 
