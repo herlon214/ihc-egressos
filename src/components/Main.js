@@ -1,7 +1,6 @@
 // Libs
 import React from 'react'
 
-
 // Components
 import { Paper, withStyles, Grid, Typography } from '@material-ui/core'
 import { Switch, Route } from 'react-router-dom'
