@@ -12,12 +12,12 @@ const styles = theme => ({
   }
 })
 
-const Navbar = ({ classes, logged, user }) => (
+const Navbar = ({ classes, user }) => (
   <div>
     <AppBar>
       <Toolbar className={classes.root} style={{justifyContent: 'space-between'}}>
         <UserMenu user={user} />
-        <UserLogo logged={logged} />
+        <UserLogo user={user} />
       </Toolbar>
     </AppBar>
 

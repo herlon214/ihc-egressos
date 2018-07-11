@@ -5,16 +5,22 @@ import React, { Component } from 'react'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import { Link } from 'react-router-dom'
-import { withStyles, Menu, MenuItem } from '@material-ui/core'
+import { withStyles, Menu, MenuItem, Typography } from '@material-ui/core'
 import { connect } from 'react-redux';
 import { actions } from '../../reducers/users'
 
-const styles = {
+const styles = theme => ({
   link: {
     color: 'white',
     textDecoration: 'none'
+  },
+  button: {
+    margin: theme.spacing.unit,
+  },
+  extendedIcon: {
+    marginRight: theme.spacing.unit,
   }
-}
+})
 
 class UserLogoComponent extends Component {
   state = {
@@ -38,23 +44,30 @@ class UserLogoComponent extends Component {
     this.handleClose()
   }
 
+  getFirstName = (name) => {
+    return name.split(' ')[0]
+  }
+
   render() {
-    const { logged, classes } = this.props
+    const { classes, user } = this.props
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
     return (
       <div>
-        {logged ?
+        {user ?
           <div>
-            <IconButton
+            <Button
+              className={classes.button}
               aria-owns={open ? 'menu-appbar' : null}
               aria-haspopup="true"
               onClick={this.handleMenu}
-              color="inherit"
+              color="secondary"
+              variant='extendedFab'
             >
-              <i className='material-icons'> account_circle </i>
-            </IconButton>
+              <i className='material-icons' style={{ marginRight: '.3em'}} > account_circle </i>
+              <Typography style={{color: 'white'}}> {this.getFirstName(user.get('name'))} </Typography>
+            </Button>
             <Menu
               id="menu-appbar"
               anchorEl={anchorEl}
@@ -72,7 +85,8 @@ class UserLogoComponent extends Component {
               <MenuItem onClick={this.handleClose}>Meus dados</MenuItem>
               <MenuItem onClick={this.handleLogout}>Sair</MenuItem>
             </Menu>
-          </div> :
+          </div> 
+          :
           <Button color='inherit'> <Link to='/login' className={classes.link}> Login  </Link></Button>
         }
       </div>

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { actions } from '../../reducers/users'
 
 // Components
-import { withStyles,  Typography } from '@material-ui/core'
+import { withStyles, Typography } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import LoginForm from './LoginForm'
@@ -29,13 +29,13 @@ const styles = theme => ({
 })
 
 class LoginComponent extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.submitLogin = this.submitLogin.bind(this)
   }
 
-  submitLogin (fields) {
+  submitLogin(fields) {
     if (fields.password.length < 1 || fields.username.length < 11) {
       return
     }
@@ -45,10 +45,14 @@ class LoginComponent extends Component {
     })
   }
 
-  render () {
+  render() {
     const { classes } = this.props
     return (
-      <div>
+      this.props.logged ?
+        <Grid container justify='center' className={classes.main} >
+          <Typography> {this.props.user.get('name')} </Typography>
+        </Grid>
+        :
         <Grid container justify='center' className={classes.main} >
           <Grid item xs={12} sm={8}>
             <Typography variant='display1'
@@ -59,15 +63,12 @@ class LoginComponent extends Component {
           <Grid item xs={12} sm={8}>
             <Paper className={classes.paper}>
               <Grid container className={classes.grid}>
-                { this.props.logged
-                  ? <Typography> {this.props.user.get('name')} </Typography>
-                  : <LoginForm error={this.props.error} onLogin={this.submitLogin} />
-                }
+                <LoginForm error={this.props.error} onLogin={this.submitLogin} />
               </Grid>
             </Paper>
           </Grid>
+
         </Grid>
-      </div>
     )
   }
 }

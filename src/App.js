@@ -14,9 +14,8 @@ class App extends Component {
       <div>
         <Navbar
           user={ this.props.user } 
-          logged={ this.props.user ? true : false }
         />
-        <Main />
+        <Main auth={ this.props.user != null} />
         <Footer />
       </div>
     )

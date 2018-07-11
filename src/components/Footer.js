@@ -19,13 +19,13 @@ const Footer = ({ classes }) => (
   <div>
     <footer>
       <Grid container style={{height: '250px'}} className={classes.footer} >
-        <Grid item className={classes.grid} xs={6}>
+        <Grid item className={classes.grid} xs={12} sm={6}>
           <Typography style={{color: '#FFF', fontWeight: 'bold'}}> coluna 1 </Typography>
         </Grid>
-        <Grid item className={classes.grid} xs={3}>
+        <Grid item className={classes.grid} xs={12} sm={3}>
           <Typography style={{color: '#FFF', fontWeight: 'bold'}}> coluna 2 </Typography>
         </Grid>
-        <Grid item className={classes.grid} xs={3}>
+        <Grid item className={classes.grid} xs={12} sm={3}>
           <Typography style={{color: '#FFF', fontWeight: 'bold'}}> coluna 3 </Typography>
         </Grid>
       </Grid>

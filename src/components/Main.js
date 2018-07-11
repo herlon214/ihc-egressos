@@ -3,8 +3,9 @@ import React from 'react'
 
 // Components
 import { Paper, withStyles, Grid, Typography } from '@material-ui/core'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import Login from './Login'
+import Companies from './Companies';
 
 const styles = theme => ({
   main: {
@@ -28,17 +29,74 @@ const Home = ({ classes }) => (
   </div>
 )
 
-const Main = ({ classes }) => (
-  <div>
-    <Switch>
-      <Route path='/' exact
-        render={(props) => <Home {...props} classes={classes} />}
+const ProtectedRoutes = [
+  {
+    path: '/deans',
+    component: Login
+  },
+  {
+    path: '/courses',
+    component: Login
+  },
+  {
+    path: '/coordinators',
+    component: Login
+  },
+  {
+    path: '/egresses',
+    component: Login
+  },
+  {
+    path: '/messages',
+    component: Login
+  },
+  {
+    path: '/companies',
+    component: Companies
+  },
+]
+const Routes = [
+  {
+    path: '/',
+    component: Home
+  },
+  {
+    path: '/login',
+    component: Login
+  },
+  {
+    path: '/courses',
+    component: Login
+  },
+  {
+    path: '/egresses',
+    component: Login
+  }
+]
+
+
+const Main = ({ classes, auth }) => (
+  <Switch>
+    {Routes.map((route) => (
+      <Route
+        exact
+        key={route.path}
+        path={route.path}
+        render={(props) => ( 
+        <route.component {...props} classes={classes} />)} 
       />
-      <Route path='/login'
-        render={(props) => <Login {...props} classes={classes}  />}
+    ))}
+    {ProtectedRoutes.map((route) => (
+      <Route
+        exact
+        key={route.path}
+        path={route.path}
+        render={(props) => (
+          auth ? <route.component {...props} classes={classes} />
+            : <Redirect to='/login' />)}
       />
-    </Switch>
-  </div>
+    ))}
+  </Switch>
 )
 
 export default withStyles(styles)(Main)
