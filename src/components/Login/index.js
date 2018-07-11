@@ -3,11 +3,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actions } from '../../reducers/users'
 
-// Components 
+// Components
 import { withStyles,  Typography } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
-import LoginForm from './LoginForm';
+import LoginForm from './LoginForm'
 
 const styles = theme => ({
   main: {
@@ -17,27 +17,26 @@ const styles = theme => ({
     alignItems: 'center'
   },
   paper: {
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing.unit * 2
   },
   grid: {
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   gridItems: {
     padding: theme.spacing.unit * 2
   }
 })
 
-class LoginComponent extends Component { 
-  constructor(props) {
+class LoginComponent extends Component {
+  constructor (props) {
     super(props)
 
-    this.submitLogin = this.submitLogin.bind(this);
+    this.submitLogin = this.submitLogin.bind(this)
   }
 
   submitLogin (fields) {
-    if (fields.password.length < 1
-      || fields.username.length < 11) {
+    if (fields.password.length < 1 || fields.username.length < 11) {
       return
     }
     this.props.onLogin({
@@ -47,10 +46,10 @@ class LoginComponent extends Component {
   }
 
   render () {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <div>
-        <Grid container justify="center" className={classes.main} >
+        <Grid container justify='center' className={classes.main} >
           <Grid item xs={12} sm={8}>
             <Typography variant='display1'
               style={{ textAlign: 'center' }}>
@@ -60,9 +59,9 @@ class LoginComponent extends Component {
           <Grid item xs={12} sm={8}>
             <Paper className={classes.paper}>
               <Grid container className={classes.grid}>
-                { this.props.logged ?
-                 <Typography> {this.props.user.get('name')} </Typography> :
-                  <LoginForm error={this.props.error} onLogin={this.submitLogin} />
+                { this.props.logged
+                  ? <Typography> {this.props.user.get('name')} </Typography>
+                  : <LoginForm error={this.props.error} onLogin={this.submitLogin} />
                 }
               </Grid>
             </Paper>
@@ -73,13 +72,12 @@ class LoginComponent extends Component {
   }
 }
 
-
 const mapStateToProps = (state, ownProps) => {
   console.log(state)
   return {
     error: state.users.get('error'),
     user: state.users.get('actual'),
-    logged:  state.users.get('actual') != null ? true : false
+    logged: state.users.get('actual') !== null
   }
 }
 

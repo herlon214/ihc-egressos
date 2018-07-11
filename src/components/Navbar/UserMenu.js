@@ -7,40 +7,38 @@ import CoordinatorMenu from './CoordinatorMenu'
 import EgressMenu from './EgressMenu'
 
 const UserMenu = ({ user }) => {
-  if(user) {
+  if (user) {
     switch (user.get('role')) {
-      case 'Administrator': 
+      case 'Administrator':
         return (
           <div>
-            <AdminMenu />   
+            <AdminMenu />
           </div>
         )
-      
-      case 'Coordinator': 
+
+      case 'Coordinator':
         return (
           <div>
-            <CoordinatorMenu />   
+            <CoordinatorMenu />
           </div>
         )
-      
-      case 'Egress': 
+
+      case 'Egress':
         return (
           <div>
-            <EgressMenu />   
+            <EgressMenu />
           </div>
         )
-      
+
       default:
-        return
     }
   } else {
     return (
       <div>
-          {''}
+        {''}
       </div>
     )
   }
-
 }
 
 export default UserMenu

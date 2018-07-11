@@ -99,4 +99,4 @@ const UserLogo = connect(
   mapDispatchToProps
 )(withStyles(styles)(UserLogoComponent))
 
-export default UserLogo;
+export default UserLogo

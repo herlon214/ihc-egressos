@@ -3,7 +3,7 @@ import React from 'react'
 
 // Components
 import { Grid, withStyles, Typography } from '@material-ui/core'
-import indigo from '@material-ui/core/colors/indigo';
+import indigo from '@material-ui/core/colors/indigo'
 
 const styles = theme => ({
   footer: {
@@ -13,7 +13,7 @@ const styles = theme => ({
   grid: {
     padding: theme.spacing.unit * 2
   }
-});
+})
 
 const Footer = ({ classes }) => (
   <div>
@@ -28,10 +28,10 @@ const Footer = ({ classes }) => (
         <Grid item className={classes.grid} xs={3}>
           <Typography style={{color: '#FFF', fontWeight: 'bold'}}> coluna 3 </Typography>
         </Grid>
-      </Grid> 
+      </Grid>
     </footer>
 
   </div>
-);
+)
 
-export default withStyles(styles)(Footer);
+export default withStyles(styles)(Footer)

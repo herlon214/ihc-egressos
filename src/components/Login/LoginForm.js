@@ -5,7 +5,6 @@ import React, { Component } from 'react'
 import { withStyles, Button, Typography, FormControl, InputLabel, Input, FormHelperText } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
 
-
 const styles = theme => ({
   main: {
     margin: '5em 0',
@@ -13,11 +12,11 @@ const styles = theme => ({
     alignItems: 'center'
   },
   paper: {
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing.unit * 2
   },
   grid: {
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   gridItems: {
     padding: theme.spacing.unit * 2
@@ -25,7 +24,7 @@ const styles = theme => ({
 })
 
 class LoginForm extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       fields: {
@@ -42,9 +41,9 @@ class LoginForm extends Component {
     this.updateField = this.updateField.bind(this)
   }
 
-  updateField(e) {
-    const fields = Object.assign({}, this.state.fields);
-    fields[e.target.name] = e.target.value;
+  updateField (e) {
+    const fields = Object.assign({}, this.state.fields)
+    fields[e.target.name] = e.target.value
     if (e.target.name === 'username') {
       if (fields[e.target.name].length > 11 || fields[e.target.name].match(/\D/)) {
         return
@@ -86,12 +85,12 @@ class LoginForm extends Component {
   }
 
   onLogin (e) {
-    e.preventDefault();
+    e.preventDefault()
     // console.log(this.state.fields)
-    this.props.onLogin(this.state.fields);
+    this.props.onLogin(this.state.fields)
   }
 
-  render() {
+  render () {
     const { classes } = this.props
     return (
       <div>
@@ -100,36 +99,36 @@ class LoginForm extends Component {
             <Typography> {this.props.error} </Typography>
           </Grid>
           <Grid item xs={10} sm={8} className={classes.gridItems}>
-            <FormControl aria-describedby="name-error-text">
-              <InputLabel htmlFor="name-error"> CPF </InputLabel>
-              <Input name='username' id="name-error"
+            <FormControl aria-describedby='name-error-text'>
+              <InputLabel htmlFor='name-error'> CPF </InputLabel>
+              <Input name='username' id='name-error'
                 error={this.state.usernameInvalid}
                 value={this.state.fields.username}
                 onChange={this.updateField}
               />
-              <FormHelperText id="name-error-text">
+              <FormHelperText id='name-error-text'>
                 {this.state.fieldsError.username}
               </FormHelperText>
             </FormControl>
           </Grid>
           <Grid item xs={10} sm={8} className={classes.gridItems}>
-            <FormControl aria-describedby="pwd-error-text">
-              <InputLabel htmlFor="pwd-error"> Senha </InputLabel>
+            <FormControl aria-describedby='pwd-error-text'>
+              <InputLabel htmlFor='pwd-error'> Senha </InputLabel>
               <Input
-                type="password" name='password'
-                id="pwd-error" error={this.state.passwordInvalid}
+                type='password' name='password'
+                id='pwd-error' error={this.state.passwordInvalid}
                 value={this.state.fields.password}
                 onChange={this.updateField}
               />
-              <FormHelperText id="pwd-error-text">
+              <FormHelperText id='pwd-error-text'>
                 {this.state.fieldsError.password}
               </FormHelperText>
             </FormControl>
           </Grid>
           <Grid item xs={10} sm={8} className={classes.gridItems}>
-            <Button type='submit' variant="contained" color="primary">
+            <Button type='submit' variant='contained' color='primary'>
               Acessar
-                  </Button>
+            </Button>
           </Grid>
         </form>
       </div>
@@ -137,4 +136,4 @@ class LoginForm extends Component {
   }
 }
 
-export default withStyles(styles)(LoginForm);
+export default withStyles(styles)(LoginForm)

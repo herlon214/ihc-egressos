@@ -13,14 +13,14 @@ const styles = theme => ({
     height: '350px',
     justifyContent: 'center',
     alignItems: 'center'
-  },
+  }
 })
 
 const Home = ({ classes }) => (
   <div>
     <Grid container className={classes.main}>
       <Grid item xs={6}>
-        <Paper className={ classes.paper }>
+        <Paper className={classes.paper}>
           <Typography style={{ padding: '1em', textAlign: 'center' }}> Bem Vindo   </Typography>
         </Paper>
       </Grid>
@@ -34,11 +34,11 @@ const Main = ({ classes }) => (
       <Route path='/' exact
         render={(props) => <Home {...props} classes={classes} />}
       />
-      <Route path='/login' 
-        render={(props) => <Login {...props} classes={classes}  />} 
+      <Route path='/login'
+        render={(props) => <Login {...props} classes={classes}  />}
       />
     </Switch>
   </div>
-);
+)
 
-export default withStyles(styles)(Main);
+export default withStyles(styles)(Main)
