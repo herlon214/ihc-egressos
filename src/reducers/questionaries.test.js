@@ -2,7 +2,7 @@ import reducer, { actions } from './questionaries'
 import { initialState as initialUsersState } from './users'
 
 test(`must insert a new questionary`, () => {
-  const state = reducer(undefined , {})
+  const state = reducer(undefined, {})
   const action = {
     type: actions.QUESTIONARIES_INSERT,
     payload: {
@@ -30,7 +30,7 @@ test(`must remove a questionary`, () => {
   expect(result.get('answers').size).toBe(0)
 })
 
-test(`must insert a answer`, () => {
+test(`must insert an answer`, () => {
   const state = reducer(undefined , {})
   const action = {
     type: actions.QUESTIONARIES_ANSWERS_INSERT,
@@ -50,4 +50,16 @@ test(`must insert a answer`, () => {
   expect(result.get('answers').size).toBe(2)
   expect(result.getIn(['answers', 1, 'questions', 0, 'answer'])).toBe('Good')
   expect(result.getIn(['answers', 1, 'questions']).size).toBe(3)
+})
+
+test(`must remove an answer`, () => {
+  const state = reducer(undefined, {})
+  const action = {
+    type: actions.QUESTIONARIES_ANSWERS_REMOVE,
+    payload: state.getIn(['answer', 0, 'id'])
+  }
+
+  const result = reducer(state, action)
+
+  expect(result.get('answers').size).toBe(0)
 })
