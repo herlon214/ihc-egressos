@@ -7,11 +7,11 @@ const styles = theme => ({
   },
 });
 
-const ButtonComponent = ({ classes, title, icon, color, handler = () => {}, owner }) => {
+const ButtonComponent = ({ classes, title, icon, color, handler = () => {} }) => {
   return (
     <Button 
       variant="fab" className={classes.button} color={color}
-      onClick={() => handler(owner)}>
+      onClick={() => handler()}>
       <i className='material-icons'> {icon} </i>
       {title}
     </Button>

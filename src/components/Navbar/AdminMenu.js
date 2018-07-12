@@ -18,9 +18,6 @@ const styles = theme => ({
 const AdminMenu = ({ classes }) => {
   return (
     <Tabs onChange={console.log}>
-      <Link to='/help' className={classes.link}>
-        <Tab label='Ajuda' value={0} />
-      </Link>
       <Link to='/deans' className={classes.link}>
         <Tab label='Faculdades' value={1}/>
         </Link>
