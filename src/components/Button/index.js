@@ -7,13 +7,15 @@ const styles = theme => ({
   },
 });
 
-const NewButton = ({ classes, title, icon, color }) => {
+const ButtonComponent = ({ classes, title, icon, color, handler = () => {}, owner }) => {
   return (
-    <Button variant="fab" className={classes.button}  color={color}>
+    <Button 
+      variant="fab" className={classes.button} color={color}
+      onClick={() => handler(owner)}>
       <i className='material-icons'> {icon} </i>
       {title}
     </Button>
   )
 }
 
-export default withStyles(styles)(NewButton) 
+export default withStyles(styles)(ButtonComponent) 

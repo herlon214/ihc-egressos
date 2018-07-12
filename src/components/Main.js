@@ -82,8 +82,7 @@ const Main = ({ classes, auth }) => (
         key={route.path}
         path={route.path}
         render={(props) => ( 
-        <route.component {...props} classes={classes} />)} 
-      />
+        <route.component {...props} classes={classes} />)} />
     ))}
     {ProtectedRoutes.map((route) => (
       <Route
@@ -92,8 +91,7 @@ const Main = ({ classes, auth }) => (
         path={route.path}
         render={(props) => (
           auth ? <route.component {...props} classes={classes} />
-            : <Redirect to='/login' />)}
-      />
+          : <Redirect to='/login' />)} />
     ))}
   </Switch>
 )

@@ -17,6 +17,12 @@ const styles = theme => ({
   },
   table: {
     minWidth: 700
+  },
+  tableHeader: {
+    textAlign: 'center'
+  },
+  tableData: {
+    textAlign: 'center'
   }
 })
 
@@ -26,14 +32,14 @@ const TableComponent = ({ classes, headers, data }) => {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            { Object.keys(headers).map(header => <TableCell>{headers[header]}</TableCell>) }
+            { Object.keys(headers).map(header => <TableCell className={classes.tableHeader}>{headers[header]}</TableCell>) }
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((item, key) => {
             return (
               <TableRow key={item.id}>
-                { Object.keys(headers).map((header) => <TableCell>{ item.get(header) }</TableCell>) }
+                { Object.keys(headers).map((header) => <TableCell className={classes.tableData}>{ item.get(header) }</TableCell>) }
               </TableRow>
             )
           })}
