@@ -5,7 +5,7 @@ import React from 'react'
 import { Paper, withStyles, Grid, Typography } from '@material-ui/core'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Login from './Login'
-import Companies from './Companies';
+import Companies from './Companies'
 
 const styles = theme => ({
   main: {
@@ -73,7 +73,6 @@ const Routes = [
     component: Login
   }
 ]
-
 
 const Main = ({ classes, auth }) => (
   <Switch>

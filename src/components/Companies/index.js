@@ -1,34 +1,65 @@
-import React, { Component } from 'react'
-import { Grid, withStyles } from '@material-ui/core';
-import CompaniesList from './CompaniesList';
-import NewButton from './NewButton';
+// Libs
+import React from 'react'
+import { connect } from 'react-redux'
+import { actions } from '../../reducers/companies'
 
-const styles = theme => ({
-  main: {
-    marginTop: '5em',
-    height: '150%',
-    justifyContent: 'flex-start!important'
-  },
-  paper: {
-    padding: theme.spacing.unit * 2
-  },
+// Components
+import { Grid } from '@material-ui/core'
+import NewButton from './NewButton'
+import Table from '../Table'
+import Typography from '@material-ui/core/Typography'
+import TextField from '@material-ui/core/TextField'
 
-})
+const headers = {
+  name: 'Nome',
+  national_register_number: 'CNPJ',
+  email: 'E-mail',
+  actions: 'Ação'
+}
 
-class Companies extends Component {
-  render() {
-    const { classes } = this.props
-    return (
-      <Grid container className={classes.main}>
-        <Grid item xs={12}>
-          <CompaniesList />
-        </Grid>
-        <Grid item xs={2} >
-          <NewButton />
-        </Grid>
-      </Grid>
-    )
+const Companies = ({ companies, filter, setFilter }) => (
+  <Grid container>
+    <Grid item xs={12}>
+      <Typography variant='display3'>Empresas</Typography>
+      <TextField
+        fullWidth
+        placeholder='Digite um cnpj, nome ou e-mail'
+        onChange={(e) => setFilter(e.target.value)}
+        value={filter} />
+      <Table
+        headers={headers}
+        data={companies} />
+    </Grid>
+    <Grid item xs={2} >
+      <NewButton />
+    </Grid>
+  </Grid>
+)
+
+const mapStateToProps = (state, ownProps) => {
+  const filter = state.companies.get('filter')
+
+  return {
+    filter: filter,
+    companies: state.companies.get('list')
+      .map(item => {
+        return item.set('actions', <NewButton />)
+      })
+      .filter(item => {
+        return item.get('name').toLowerCase().indexOf(filter) >= 0 ||
+          item.get('national_register_number').toLowerCase().indexOf(filter) >= 0 ||
+          item.get('email').toLowerCase().indexOf(filter) >= 0
+      })
   }
 }
 
-export default withStyles(styles)(Companies)
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    setFilter: (payload) => dispatch({ type: actions.COMPANIES_SET_FILTER, payload })
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Companies)

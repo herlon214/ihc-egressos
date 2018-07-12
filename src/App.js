@@ -1,26 +1,24 @@
 // Libs
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 // Components
+import Grid from '@material-ui/core/Grid'
 import Navbar from './components/Navbar'
-import Footer from './components/Footer'
 import Main from './components/Main'
 
-class App extends Component {
-  render () {
-    return (
-      <div>
-        <Navbar
-          user={ this.props.user } 
-        />
-        <Main auth={ this.props.user != null} />
-        <Footer />
-      </div>
-    )
-  }
-}
+const App = (props) => (
+  <Grid container>
+    <Grid item xs={12} style={{marginBottom: '100px'}}>
+      <Navbar user={props.user} />
+    </Grid>
+
+    <Grid item xs={12} style={{marginBottom: '100px'}}>
+      <Main auth={props.user !== null} />
+    </Grid>
+  </Grid>
+)
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -32,8 +30,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {}
 }
 
-
-export default withRouter(connect (
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)) 
+)(App))

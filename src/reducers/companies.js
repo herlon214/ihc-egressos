@@ -3,6 +3,7 @@ import { Map, List, fromJS } from 'immutable'
 import uuid from 'uuid'
 
 const initialState = Map({
+  filter: '',
   list: List([
     Map({
       id: uuid(),
@@ -30,6 +31,7 @@ const initialState = Map({
 
 // Used to keep namespaces consistency
 const actions = {
+  COMPANIES_SET_FILTER: 'COMPANIES_SET_FILTER', // Set a filter text to be used
   COMPANIES_INSERT: 'COMPANIES_INSERT', // Insert a new company
   COMPANIES_REMOVE: 'COMPANIES_REMOVE', // Remove a given company
   COMPANIES_UPDATE: 'COMPANIES_UPDATE', // Update a given company
@@ -53,7 +55,7 @@ export default function reducer (state = initialState, action) {
       list = list.push(fromJS(data).merge(model))
 
       return state.set('list', list)
-    
+
     /**
      * payload: uuid
      */
@@ -72,6 +74,12 @@ export default function reducer (state = initialState, action) {
       })
 
       return state.set('list', list)
+
+    /**
+     * payload: string
+     */
+    case actions.COMPANIES_SET_FILTER:
+      return state.set('filter', action.payload)
 
     default:
       return state
