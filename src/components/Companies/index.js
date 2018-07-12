@@ -6,7 +6,7 @@ import swal from 'sweetalert'
 
 // Components
 import { Grid } from '@material-ui/core'
-import NewButton from '../Button'
+import Button from '../Button'
 import Table from '../Table'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
@@ -46,9 +46,23 @@ const actionButtons = [
   }
 ]
 
-const Companies = ({ companies, filter, setFilter }) => (
-  
-  <Grid container>
+const Companies = ({ companies, filter, setFilter, onInsert, onRemove, onUpdate }) => {
+  companies = companies.map(item => {
+    const buttons = [
+      <Button
+        icon='clear' 
+        color='secondary'
+        handler={() => onRemove(item.get('id'))}  />,
+      <Button
+        icon='create' 
+        color='primary'
+        handler={() => onInsert({payload: null})}  />,
+      
+    ]
+    return item.set('actions', buttons)
+  })
+
+  return (<Grid container>
     <Grid item xs={12}>
       <Typography variant='display3'> Empresas </Typography>
       <TextField
@@ -61,10 +75,10 @@ const Companies = ({ companies, filter, setFilter }) => (
         data={companies} />
     </Grid>
     <Grid item xs={2} >
-      <NewButton icon='add' color='primary'/>
+      <Button icon='add' color='primary'/>
     </Grid>
-  </Grid>
-)
+  </Grid>)
+}
 
 const mapStateToProps = (state, ownProps) => {
   const filter = state.companies.get('filter')
@@ -72,28 +86,21 @@ const mapStateToProps = (state, ownProps) => {
   return {
     filter: filter,
     companies: state.companies.get('list')
-      .map(item => {
-        return item.set('actions', actionButtons.map( btn =>
-          <NewButton
-          key={item.get('id')} 
-          icon={btn.icon} 
-          color={btn.color}
-          handler={btn.handler}
-          owner={item.get('id')}  /> ))
-      })
       .filter(item => {
         return item.get('name').toLowerCase().indexOf(filter) >= 0 ||
           item.get('national_register_number').toLowerCase().indexOf(filter) >= 0 ||
           item.get('email').toLowerCase().indexOf(filter) >= 0
       })
+      
+      
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    create: (payload) =>  dispatch({ type: actions.COMPANIES_CREATE, payload }),
-    remove: (payload) =>  dispatch({ type: actions.COMPANIES_REMOVE, payload }),
-    update: (payload) =>  dispatch({ type: actions.COMPANIES_UPDATE, payload }),
+    onInsert: (payload) =>  dispatch({ type: actions.COMPANIES_INSERT, payload }),
+    onRemove: (payload) =>  dispatch({ type: actions.COMPANIES_REMOVE, payload }),
+    onUpdate: (payload) =>  dispatch({ type: actions.COMPANIES_UPDATE, payload }),
     setFilter: (payload) => dispatch({ type: actions.COMPANIES_SET_FILTER, payload })
   }
 }
