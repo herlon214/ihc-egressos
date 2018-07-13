@@ -31,7 +31,7 @@ class FormComponent extends Component {
 
   handleChange(ev) {
     const fields = Object.assign({}, this.state.fields)
-    fields[ev.target.name] = ev.target.value;
+    fields[ev.target.name]['data'] = ev.target.value;
     this.setState({ fields });
   }
 

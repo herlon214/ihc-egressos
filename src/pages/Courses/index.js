@@ -42,11 +42,13 @@ const handleUpdate = (onUpdate, id, college) => {
 const publicHeaders = {
   name: 'Nome',
   college: 'Faculdade',
+  coordinator: 'Coordenador',
 }
 
 const protectedHeaders = {
   name: 'Nome',
   college: 'Faculdade',
+  coordinator: 'Coordenador',
   actions: 'Ação'
 }
 

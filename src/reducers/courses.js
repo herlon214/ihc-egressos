@@ -7,47 +7,56 @@ const initialState = Map({
     Map({
       id: uuid(),
       name: 'CIENCIAS ECONÔMICAS',
-      college: 'FACE'
+      college: 'FACE',
+      coordinator: 'Hugo Pereira'
     }),
     Map({
       id: uuid(),
       name: 'ZOOTECNIA',
-      college: 'FCA'
+      college: 'FCA',
+      coordinator: 'João de Oliveira'
     }),
     Map({
       id: uuid(),
       name: 'CIENCIAS BIOLOGICAS',
-      college: 'FCBA'
+      college: 'FCBA',
+      coordinator: 'Marcelo Grant'
     }),
     Map({
       id: uuid(),
       name: 'SISTEMAS DE INFORMAÇÃO',
-      college: 'FACET' 
+      college: 'FACET',
+      coordinator: 'Rodrigo Oeiras'
     }),
     Map({
       id: uuid(),
       name: 'CIÊNCIAS SOCIAIS',
-      college: 'FCH'
+      college: 'FCH',
+      coordinator: 'Janaína Ferreira'
     }),
     Map({
       id: uuid(),
       name: 'LETRAS',
-      college: 'FACALE'
+      college: 'FACALE',
+      coordinator: 'Eula Paula Cunha'
     }),
     Map({
       id: uuid(),
       name: 'DIREITO',
-      college: 'FADIR'
+      college: 'FADIR',
+      coordinator: 'Cristiane Chaves'
     }),
     Map({
       id: uuid(),
       name: 'Engenharia Civil',
-      college: 'FAEN'
+      college: 'FAEN',
+      coordinator: 'Dolores Sanabria'
     }),
     Map({
       id: uuid(),
       name: 'PEDAGOGIA',
-      college: 'FAED'
+      college: 'FAED',
+      coordinator: 'Caio Fabio Junqueira'
     }),
   ]) // List of colleges
 })
