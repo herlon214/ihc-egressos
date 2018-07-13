@@ -9,6 +9,7 @@ import Companies from '../pages/Companies'
 import MessagesPage from '../pages/Messages'
 import EgressesPage from '../pages/Egresses'
 import MyDataPage from '../pages/MyData'
+import HelpPage from '../pages/Help'
 import JobsPage from '../pages/Jobs'
 import TestimonialsPage from '../pages/Testimonials'
 import Colleges from '../pages/Colleges'
@@ -90,6 +91,10 @@ const Routes = [
   {
     path: '/jobs',
     component: JobsPage
+  },
+  {
+    path: '/help',
+    component: HelpPage
   }
 ]
 

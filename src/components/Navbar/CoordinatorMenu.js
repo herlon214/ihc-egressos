@@ -9,6 +9,7 @@ import Tab from '@material-ui/core/Tab'
 const CoordinatorMenu = ({ history }) => {
   return (
     <Tabs onChange={(e, value) => history.push(value)}>
+      <Tab label='Ajuda' value='/help' />
       <Tab label='Cursos' value='/courses' />
       <Tab label='Egressos' value='/egresses' />
       <Tab label='Mensagens' value='/messages' />
