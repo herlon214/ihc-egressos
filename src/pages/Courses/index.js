@@ -53,7 +53,7 @@ const protectedHeaders = {
 }
 
 const Courses = ({ courses, filter, setFilter, onInsert, onRemove, openModal, onClose, onOpen, user }) => {
-  const headers = user && (user.get('role') === 'Administrator') ? protectedHeaders : publicHeaders
+  const headers = user && (user.get('role') === 'Administrator' || user.get('role') === 'Coordinator' ) ? protectedHeaders : publicHeaders
   courses = courses.map(item => {
     const buttons = [
       <Button
@@ -77,7 +77,7 @@ const Courses = ({ courses, filter, setFilter, onInsert, onRemove, openModal, on
           headers={headers}
           data={courses} />
       </Grid>
-      { user && user.get('role') === 'Administrator' ?
+      { user && (user.get('role') === 'Administrator' || user.get('role') === 'Coordinator' ) ?
         <Grid item xs={2} >
           <Button title='Novo' color='primary' onClick={onOpen} />
         </Grid>
