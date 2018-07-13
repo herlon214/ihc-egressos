@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actions } from '../../reducers/messages'
+import { roles } from '../../reducers/users'
 
 // Components
 import Typography from '@material-ui/core/Typography'
@@ -35,7 +36,9 @@ class Messages extends Component {
       <div>
         <Typography variant='display3'>
           Mensagens
-          <Button color='primary' title='Nova mensagem' onClick={() => this.changeDialog('create', true)} />
+          <RoleMatch roles={[roles.Administrator, roles.Coordinator, roles.Egress]}>
+            <Button color='primary' title='Nova mensagem' onClick={() => this.changeDialog('create', true)} />
+          </RoleMatch>
         </Typography>
         <br />
         <br />

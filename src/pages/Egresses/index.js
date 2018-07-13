@@ -30,7 +30,7 @@ class Egresses extends Component {
       dialogs: { edit: false, create: false, remove: false },
       actual: Map({}),
       egresses: this.props.egresses.map(item => {
-        const buttons = <RoleMatch roles={[roles.Administrator, roles.Coordinator]}>
+        const buttons = <RoleMatch roles={[roles.Administrator]}>
           <Button
             title='Apagar'
             onClick={() => this.onRemove(item)}
@@ -68,7 +68,10 @@ class Egresses extends Component {
     return (<Grid container>
       <Grid item xs={12}>
         <Typography variant='display3'>
-          Egressos <Button title='Criar novo' color='primary' onClick={() => this.setState({ dialogs: { create: true } })} />
+          Egressos
+          <RoleMatch roles={[roles.Administrator]}>
+            <Button title='Criar novo' color='primary' onClick={() => this.setState({ dialogs: { create: true } })} />
+          </RoleMatch>
         </Typography>
         <TextField
           fullWidth
