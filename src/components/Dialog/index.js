@@ -12,10 +12,14 @@ function Transition(props) {
 }
 
 class AlertDialogSlide extends React.Component {
-  state = {
-    open: false,
-  };
-
+  constructor(props) {
+    super(props)
+    this.state = {
+      open: false,
+      resource: '',
+      action: () => {}
+    };
+  }
   componentDidMount() {
     this.props.onRef(this)
   }
@@ -28,9 +32,9 @@ class AlertDialogSlide extends React.Component {
     this.setState({ open: !this.state.open });
   };
 
+
   render() {
     return (
-      <div>
         <Dialog
           open={this.state.open}
           TransitionComponent={Transition}
@@ -51,12 +55,11 @@ class AlertDialogSlide extends React.Component {
             <Button onClick={() => this.handleClick()} color="primary">
               Cancelar
             </Button>
-            <Button onClick={() => this.handleClick()} color="primary">
+            <Button onClick={() => this.handleDelete()} color="primary">
               Ok
             </Button>
           </DialogActions>
         </Dialog>
-      </div>
     );
   }
 }

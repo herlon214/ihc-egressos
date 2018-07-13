@@ -16,7 +16,7 @@ const styles = theme => ({
 
 const GuestMenu = ({ classes }) => {
   return (
-    <Tabs value={0} onChange={console.log}>
+    <Tabs onChange={console.log}>
       <Link to='/' className={classes.link}>
         <Tab label='Inicio' />
       </Link>

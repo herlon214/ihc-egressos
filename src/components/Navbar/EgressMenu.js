@@ -3,7 +3,7 @@ import { Tabs, Tab } from '@material-ui/core';
 
 const EgressMenu = () => {
   return (
-    <Tabs value={0} onChange={console.log}>
+    <Tabs onChange={console.log}>
       <Tab label='Inicio' />
       <Tab label='Cursos' />
       <Tab label='Egressos' />

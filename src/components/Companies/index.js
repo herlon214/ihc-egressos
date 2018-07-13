@@ -2,7 +2,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { actions } from '../../reducers/companies'
-
+import swal from 'sweetalert'
 
 // Components
 import { Grid } from '@material-ui/core'
@@ -10,11 +10,32 @@ import Button from '../Button'
 import Table from '../Table'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
-import Dialog from '../Dialog'
+import Modal from '../Modal'
 
 const handleDelete = (onRemove, id) => {
-  this.child.handleClick()
-  // bool ? onRemove(id) : false
+  swal({
+    title: "Você tem certeza?",
+    text: "Esta operação é irreversível",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+      onRemove(id)
+      swal("Registro Excluído!", {
+        icon: "success",
+      });
+    }
+  });
+}
+
+const handleInsert = ( onInsert, company) => {
+  onInsert(company)
+}
+
+const handleUpdate = (onUpdate, id, company) => {
+  onUpdate(id, ...company)
 }
 
 const headers = {
@@ -23,6 +44,7 @@ const headers = {
   email: 'E-mail',
   actions: 'Ação'
 }
+
 
 
 const Companies = ({ companies, filter, setFilter, onInsert, onRemove, onUpdate }) => {
@@ -35,13 +57,13 @@ const Companies = ({ companies, filter, setFilter, onInsert, onRemove, onUpdate 
       <Button
         icon='create'
         color='primary'
-        handler={() => onInsert({ payload: null })} />,
+        handler={() => {}} />,
     ]
     return item.set('actions', buttons)
   })
+
   return (
     <Grid container>
-      <Dialog onRef={ref => (this.child = ref) } />
       <Grid item xs={12}>
         <Typography variant='display3'> Empresas </Typography>
         <TextField
@@ -54,7 +76,7 @@ const Companies = ({ companies, filter, setFilter, onInsert, onRemove, onUpdate 
           data={companies} />
       </Grid>
       <Grid item xs={2} >
-        <Button icon='add' color='primary' />
+        <Modal handleInsert={handleInsert} onInsert={onInsert}/>
       </Grid>
     </Grid>
   )
@@ -62,6 +84,7 @@ const Companies = ({ companies, filter, setFilter, onInsert, onRemove, onUpdate 
 
 const mapStateToProps = (state, ownProps) => {
   const filter = state.companies.get('filter')
+
   return {
     filter: filter,
     companies: state.companies.get('list')
