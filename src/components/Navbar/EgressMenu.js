@@ -14,6 +14,7 @@ const EgressMenu = ({ history }) => {
       <Tab label='Depoimentos' value='/testimonials' />
       <Tab label='Messages' value='/messages' />
       <Tab label='Forum' value='/forums' />
+      <Tab label='Empregos' value='/jobs' />
     </Tabs>
   )
 }
