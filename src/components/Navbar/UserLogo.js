@@ -95,9 +95,7 @@ class UserLogoComponent extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state)
-  return {
-  }
+  return {}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

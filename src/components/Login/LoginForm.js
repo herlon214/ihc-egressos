@@ -86,7 +86,6 @@ class LoginForm extends Component {
 
   onLogin (e) {
     e.preventDefault()
-    // console.log(this.state.fields)
     this.props.onLogin(this.state.fields)
   }
 

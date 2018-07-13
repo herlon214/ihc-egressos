@@ -11,6 +11,20 @@ const initialState = Map({
       to: initialUsersState.getIn(['list', 0, 'id']),
       read: false,
       message: `Olá egresso, como tem ido sua vida no mercado de trabalho? Por favor, assim que possível envie um e-mail para mim. jeovano@ufd.edu.br`
+    }),
+    Map({
+      id: uuid(),
+      from: initialUsersState.getIn(['list', 2, 'id']),
+      to: initialUsersState.getIn(['list', 0, 'id']),
+      read: false,
+      message: `Olá egresso, tudo bem? Preciso do seu e-mail para entrar em contato.`
+    }),
+    Map({
+      id: uuid(),
+      from: initialUsersState.getIn(['list', 3, 'id']),
+      to: initialUsersState.getIn(['list', 0, 'id']),
+      read: false,
+      message: `Gostaria de falar com você, pode me ligar?`
     })
   ])
 })

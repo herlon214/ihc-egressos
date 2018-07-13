@@ -10,7 +10,6 @@ const Component = ({ counter, onIncrement }) => (
 )
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state)
   return {
     counter: state.example.get('counter')
   }
