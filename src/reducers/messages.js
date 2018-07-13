@@ -9,6 +9,7 @@ const initialState = Map({
       id: uuid(),
       from: initialUsersState.getIn(['list', 1, 'id']),
       to: initialUsersState.getIn(['list', 0, 'id']),
+      previousMessage: 'Oi Jeovano, tudo bem contigo?',
       read: false,
       message: `Olá egresso, como tem ido sua vida no mercado de trabalho? Por favor, assim que possível envie um e-mail para mim. jeovano@ufd.edu.br`
     }),
@@ -23,6 +24,7 @@ const initialState = Map({
       id: uuid(),
       from: initialUsersState.getIn(['list', 3, 'id']),
       to: initialUsersState.getIn(['list', 0, 'id']),
+      previousMessage: 'Acabei de enviar-lhe um e-mail, quando puder me responda.',
       read: false,
       message: `Gostaria de falar com você, pode me ligar?`
     })
@@ -44,7 +46,7 @@ export default function reducer (state = initialState, action) {
 
   switch (action.type) {
     /**
-     * payload: { from: uuid, to: uuid, message: string }
+     * payload: { from: uuid, to: uuid, message: string, previousMessage?: string }
      */
     case actions.MESSAGES_INSERT:
       data = action.payload
