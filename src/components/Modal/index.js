@@ -13,7 +13,7 @@ const styles = theme => ({
 
 class SimpleModal extends React.Component {
   render() {
-    const { classes, handleInsert, onInsert, fields } = this.props;
+    const { classes, handleInsert, onInsert, fields, category } = this.props;
     return (
       <Modal
         aria-labelledby="simple-modal-title"
@@ -26,6 +26,7 @@ class SimpleModal extends React.Component {
           close={this.props.onClose}
           handleInsert={handleInsert}
           onInsert={onInsert}
+          category={category}
         />
       </Modal>
     );

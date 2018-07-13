@@ -66,7 +66,7 @@ const Companies = ({ companies, filter, setFilter, onInsert, onRemove, onUpdate,
 
   return (
     <Grid container>
-      <Modal open={openModal} handleInsert={handleInsert} onInsert={onInsert} onClose={onClose} fields={formFields} />
+      <Modal category='Empresa' open={openModal} handleInsert={handleInsert} onInsert={onInsert} onClose={onClose} fields={formFields} />
       <Grid item xs={12}>
         <Typography variant='display3'> Empresas </Typography>
         <TextField

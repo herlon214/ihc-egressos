@@ -63,7 +63,7 @@ const Colleges = ({ colleges, filter, setFilter, onInsert, onRemove, openModal, 
 
   return (
     <Grid container>
-      <Modal open={openModal} handleInsert={handleInsert} onInsert={onInsert} onClose={onClose} fields={formFields} />
+      <Modal category='Faculdade' open={openModal} handleInsert={handleInsert} onInsert={onInsert} onClose={onClose} fields={formFields} />
       <Grid item xs={12}>
         <Typography variant='display3'> Faculdades </Typography>
         <Table

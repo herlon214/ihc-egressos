@@ -50,8 +50,6 @@ const protectedHeaders = {
   actions: 'Ação'
 }
 
-
-
 const Courses = ({ courses, filter, setFilter, onInsert, onRemove, openModal, onClose, onOpen, user }) => {
   const headers = user && user.get('role') === 'Administrator' ? protectedHeaders : publicHeaders
   courses = courses.map(item => {
@@ -70,7 +68,7 @@ const Courses = ({ courses, filter, setFilter, onInsert, onRemove, openModal, on
 
   return (
     <Grid container>
-      <Modal open={openModal} handleInsert={handleInsert} onInsert={onInsert} onClose={onClose} fields={formFields} />
+      <Modal category='Cursos' open={openModal} handleInsert={handleInsert} onInsert={onInsert} onClose={onClose} fields={formFields} />
       <Grid item xs={12}>
         <Typography variant='display3'> Cursos </Typography>
         <Table

@@ -43,10 +43,10 @@ class FormComponent extends Component {
   }
 
   render() {
-    const { classes, fields } = this.props
+    const { classes, fields, category } = this.props
     return (
       <Paper className={classes.root}>
-        <Typography variant='display2'> Nova Empresa </Typography>
+        <Typography variant='display2'> Nova {category} </Typography>
         <form onSubmit={(e) => { this.handleSubmit(e) }}>
           <Grid container>
             {Object.keys(fields).map(field => (
