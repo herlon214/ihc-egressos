@@ -48,7 +48,7 @@ class FormComponent extends Component {
       <Paper className={classes.root}>
         <Typography variant='display2'> Nova Empresa </Typography>
         <form onSubmit={(e) => { this.handleSubmit(e) }}>
-          <Grid container >
+          <Grid container>
             {Object.keys(fields).map(field => (
               <Grid item xs={12}>
                   <TextField
