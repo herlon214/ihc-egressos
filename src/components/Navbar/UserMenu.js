@@ -8,7 +8,6 @@ import EgressMenu from './EgressMenu'
 import GuestMenu from './GuestMenu'
 
 const UserMenu = ({ user }) => {
-  console.log(user)
   if (user) {
     switch (user.get('role')) {
       case 'Administrator':

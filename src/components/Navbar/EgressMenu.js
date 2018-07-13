@@ -1,16 +1,21 @@
+// Libs
 import React from 'react'
-import { Tabs, Tab } from '@material-ui/core';
+import { withRouter } from 'react-router-dom'
 
-const EgressMenu = () => {
+// Components
+import { Tabs, Tab } from '@material-ui/core'
+
+const EgressMenu = ({ history }) => {
   return (
-    <Tabs onChange={console.log}>
-      <Tab label='Inicio' />
-      <Tab label='Cursos' />
-      <Tab label='Egressos' />
-      <Tab label='Depoimentos' />
-      <Tab label='Forum' />
+    <Tabs onChange={(e, value) => history.push(value)}>
+      <Tab label='Inicio' value='/' />
+      <Tab label='Cursos' value='/courses' />
+      <Tab label='Egressos' value='/egresses'  />
+      <Tab label='Depoimentos' value='/testimonials' />
+      <Tab label='Messages' value='/messages' />
+      <Tab label='Forum' value='/forums' />
     </Tabs>
   )
 }
 
-export default EgressMenu
+export default withRouter(EgressMenu)
