@@ -1,12 +1,13 @@
 // Libs
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 // Components
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import { Link } from 'react-router-dom'
 import { withStyles, Menu, MenuItem, Typography } from '@material-ui/core'
-import { connect } from 'react-redux';
 import { actions } from '../../reducers/users'
 
 const styles = theme => ({
@@ -82,7 +83,7 @@ class UserLogoComponent extends Component {
               open={open}
               onClose={this.handleClose}
             >
-              <MenuItem onClick={this.handleClose}>Meus dados</MenuItem>
+              <MenuItem onClick={() => this.props.history.push('/my-data')}>Meus dados</MenuItem>
               <MenuItem onClick={this.handleLogout}>Sair</MenuItem>
             </Menu>
           </div> 
@@ -109,6 +110,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const UserLogo = connect(
   mapStateToProps,
   mapDispatchToProps
-)(withStyles(styles)(UserLogoComponent))
+)(withStyles(styles)(withRouter(UserLogoComponent)))
 
 export default UserLogo

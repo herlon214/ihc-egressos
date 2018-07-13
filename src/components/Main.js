@@ -8,6 +8,7 @@ import Login from './Login'
 import Companies from '../pages/Companies'
 import MessagesPage from '../pages/Messages'
 import EgressesPage from '../pages/Egresses'
+import MyDataPage from '../pages/MyData'
 import TestimonialsPage from '../pages/Testimonials'
 import Colleges from '../pages/Colleges'
 import Courses from '../pages/Courses'
@@ -58,6 +59,10 @@ const ProtectedRoutes = [
   {
     path: '/testimonials',
     component: TestimonialsPage
+  },
+  {
+    path: '/my-data',
+    component: MyDataPage
   }
 ]
 const Routes = [
