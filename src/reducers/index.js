@@ -10,6 +10,7 @@ import messages from './messages'
 import questionaries from './questionaries'
 import testimonials from './testimonials'
 import users from './users'
+import modal from './modal'
 
 const reducers = combineReducers({
   example,
@@ -21,7 +22,8 @@ const reducers = combineReducers({
   messages,
   questionaries,
   testimonials,
-  users
+  users,
+  modal
 })
 
 export default reducers

@@ -1,7 +1,7 @@
 // Libs
 import React from 'react'
 import { connect } from 'react-redux'
-import { actions } from '../../reducers/companies'
+import { actions } from '../../reducers/colleges'
 import { actions as modalActions } from '../../reducers/modal'
 import swal from 'sweetalert'
 
@@ -13,7 +13,6 @@ import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import Modal from '../../components/Modal'
 import formFields from './formFields'
-
 
 const handleDelete = (onRemove, id) => {
   swal({
@@ -33,24 +32,22 @@ const handleDelete = (onRemove, id) => {
     });
 }
 
-const handleInsert = (onInsert, company) => {
-  onInsert(company)
+const handleInsert = (onInsert, college) => {
+  onInsert(college)
 }
 
-const handleUpdate = (onUpdate, id, company) => {
-  onUpdate(id, ...company)
+const handleUpdate = (onUpdate, id, college) => {
+  onUpdate(id, ...college)
 }
 
 const headers = {
   name: 'Nome',
-  national_register_number: 'CNPJ',
-  email: 'E-mail',
   actions: 'Ação'
 }
 
 
-const Companies = ({ companies, filter, setFilter, onInsert, onRemove, onUpdate, openModal, onClose, onOpen }) => {
-  companies = companies.map(item => {
+const Colleges = ({ colleges, filter, setFilter, onInsert, onRemove, openModal, onClose, onOpen }) => {
+  colleges = colleges.map(item => {
     const buttons = [
       <Button
         title='Apagar'
@@ -68,15 +65,10 @@ const Companies = ({ companies, filter, setFilter, onInsert, onRemove, onUpdate,
     <Grid container>
       <Modal open={openModal} handleInsert={handleInsert} onInsert={onInsert} onClose={onClose} fields={formFields} />
       <Grid item xs={12}>
-        <Typography variant='display3'> Empresas </Typography>
-        <TextField
-          fullWidth
-          placeholder='Digite um cnpj, nome ou e-mail'
-          onChange={(e) => setFilter(e.target.value)}
-          value={filter} />
+        <Typography variant='display3'> Faculdades </Typography>
         <Table
           headers={headers}
-          data={companies} />
+          data={colleges} />
       </Grid>
       <Grid item xs={2} >
         <Button title='Novo' color='primary' onClick={onOpen} />
@@ -86,32 +78,24 @@ const Companies = ({ companies, filter, setFilter, onInsert, onRemove, onUpdate,
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const filter = state.companies.get('filter')
+  const colleges = state.colleges.get('list')
   const openModal = state.modal.get('open')
   return {
-    openModal: openModal,
-    filter: filter,
-    companies: state.companies.get('list')
-      .filter(item => {
-        return item.get('name').toLowerCase().indexOf(filter) >= 0 ||
-          item.get('national_register_number').toLowerCase().indexOf(filter) >= 0 ||
-          item.get('email').toLowerCase().indexOf(filter) >= 0
-      })
+    openModal,
+    colleges
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onInsert: (payload) => dispatch({ type: actions.COMPANIES_INSERT, payload }),
-    onRemove: (payload) => dispatch({ type: actions.COMPANIES_REMOVE, payload }),
-    onUpdate: (payload) => dispatch({ type: actions.COMPANIES_UPDATE, payload }),
+    onInsert: (payload) => dispatch({ type: actions.COLLEGES_INSERT, payload }),
+    onRemove: (payload) => dispatch({ type: actions.COLLEGES_REMOVE, payload }),
     onOpen: () => dispatch({ type: modalActions.MODAL_OPEN }),
     onClose: () => dispatch({ type: modalActions.MODAL_CLOSE }),
-    setFilter: (payload) => dispatch({ type: actions.COMPANIES_SET_FILTER, payload })
   }
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Companies)
+)(Colleges)

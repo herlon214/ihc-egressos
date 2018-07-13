@@ -7,6 +7,8 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Login from './Login'
 import Companies from '../pages/Companies'
 import MessagesPage from '../pages/Messages'
+import Colleges from '../pages/Colleges';
+import Courses from '../pages/Courses';
 
 const styles = theme => ({
   main: {
@@ -32,12 +34,8 @@ const Home = ({ classes }) => (
 
 const ProtectedRoutes = [
   {
-    path: '/deans',
-    component: Login
-  },
-  {
-    path: '/courses',
-    component: Login
+    path: '/colleges',
+    component: Colleges
   },
   {
     path: '/coordinators',
@@ -67,7 +65,7 @@ const Routes = [
   },
   {
     path: '/courses',
-    component: Login
+    component: Courses
   },
   {
     path: '/egresses',

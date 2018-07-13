@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import { TextField, Grid, Button, Typography, Input } from '@material-ui/core';
-import MaskedInput from 'react-text-mask'
 
 const styles = theme => ({
   root: {
@@ -18,18 +17,6 @@ const styles = theme => ({
   }
 })
 
-const TextMaskCustom = (props) => {
-  const { mask, inputRef} = props
-  
-  return (  
-    <MaskedInput
-      ref={inputRef} 
-      mask={mask}
-      showMask
-      placeholderChar={'\u2000'}
-    />
-  )
-}
 
 class FormComponent extends Component {
   constructor(props) {
@@ -51,11 +38,9 @@ class FormComponent extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { handleInsert, onInsert, close } = this.props
-    console.log(this.state.fields)
-    // handleInsert(onInsert, this.state.fields)
+    handleInsert(onInsert, this.state.fields)
     close()
   }
-
 
   render() {
     const { classes, fields } = this.props
@@ -70,11 +55,11 @@ class FormComponent extends Component {
                     fullWidth
                     name={field}
                     label={fields[field]['label']}
-                    value={this.state[`${field}`]}
+                    value={this.state.fields[`${field}`]['data']}
                     onChange={this.handleChange}
                     className={classes.textField}
                     inputProps={{
-                      maxLength: "14"
+                      maxLength: fields[field]['size']
                     }}
                   />
               </Grid>

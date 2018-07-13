@@ -12,10 +12,10 @@ const AdminMenu = ({ history }) => {
   return (
     <Tabs onChange={(e, value) => history.push(value)}>
       <Tab label='Faculdades' value='/colleges' />
-      <Tab label='Cursos' value='/course' />
+      <Tab label='Cursos' value='/courses' />
       <Tab label='Egressos' value='/egresses' />
       <Tab label='Mensagens' value='/messages' />
-      <Tab label='Empresas' value='/comapnies' />
+      <Tab label='Empresas' value='/companies' />
     </Tabs>
   )
 }
