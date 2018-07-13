@@ -16,6 +16,7 @@ const AdminMenu = ({ history }) => {
       <Tab label='Egressos' value='/egresses' />
       <Tab label='Mensagens' value='/messages' />
       <Tab label='Empresas' value='/companies' />
+      <Tab label='Depoimentos' value='/testimonials' />
     </Tabs>
   )
 }

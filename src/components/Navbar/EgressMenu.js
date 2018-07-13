@@ -10,7 +10,7 @@ const EgressMenu = ({ history }) => {
     <Tabs onChange={(e, value) => history.push(value)}>
       <Tab label='Inicio' value='/' />
       <Tab label='Cursos' value='/courses' />
-      <Tab label='Egressos' value='/egresses'  />
+      <Tab label='Egressos' value='/egresses' />
       <Tab label='Depoimentos' value='/testimonials' />
       <Tab label='Messages' value='/messages' />
       <Tab label='Forum' value='/forums' />

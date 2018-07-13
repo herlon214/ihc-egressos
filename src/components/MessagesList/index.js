@@ -27,7 +27,6 @@ const styles = theme => ({
 })
 
 class MessagesList extends Component {
-  
   constructor (props) {
     super(props)
 
@@ -54,39 +53,39 @@ class MessagesList extends Component {
   render () {
     return this.props.messages.map(message => {
       return (<ExpansionPanel key={message.get('id')} onChange={() => this.onOpenMessage(message)}>
-      <ExpansionPanelSummary>
-        <Typography variant='title'>
-          {message.getIn(['from', 'name'])}
-          {message.get('read') === true ? '' : <Chip className={this.props.classes.chip} label='Não lida' />}
-        </Typography>
-      </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
-        <Grid container>
-          <Grid item sm={12} style={{display: message.get('previousMessage') ? 'block' : 'none'}}>
-            <Typography><strong>Você:</strong> {message.get('previousMessage')}</Typography>
-            <br />
+        <ExpansionPanelSummary>
+          <Typography variant='title'>
+            {message.getIn(['from', 'name'])}
+            {message.get('read') === true ? '' : <Chip className={this.props.classes.chip} label='Não lida' />}
+          </Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <Grid container>
+            <Grid item sm={12} style={{display: message.get('previousMessage') ? 'block' : 'none'}}>
+              <Typography><strong>Você:</strong> {message.get('previousMessage')}</Typography>
+              <br />
+            </Grid>
+            <Grid item sm={12}>
+              <Typography><strong>{message.getIn(['from', 'name'])}:</strong> {message.get('message')}</Typography>
+            </Grid>
+            <Grid item sm={12}>
+              <TextField
+                label='Responda essa mensagem'
+                multiline
+                value={this.state[`answerFor${message.get('id')}`]}
+                onChange={(e) => this.setState({ [`answerFor${message.get('id')}`]: e.target.value })}
+                rows='4'
+                placeholder='Digite sua resposta aqui...'
+                className={this.props.classes.textField}
+                margin='normal'
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Button color='secondary' title='Enviar' onClick={() => this.answerMessage(message)} />
+            </Grid>
           </Grid>
-          <Grid item sm={12}>
-            <Typography><strong>{message.getIn(['from', 'name'])}:</strong> {message.get('message')}</Typography>
-          </Grid>
-          <Grid item sm={12}>
-            <TextField
-              label='Responda essa mensagem'
-              multiline
-              value={this.state[`answerFor${message.get('id')}`]}
-              onChange={(e) => this.setState({ [`answerFor${message.get('id')}`]: e.target.value })}
-              rows='4'
-              placeholder='Digite sua resposta aqui...'
-              className={this.props.classes.textField}
-              margin='normal'
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Button color='secondary' title='Enviar' onClick={() => this.answerMessage(message)} />
-          </Grid>
-        </Grid>
-      </ExpansionPanelDetails>
-    </ExpansionPanel>)
+        </ExpansionPanelDetails>
+      </ExpansionPanel>)
     })
   }
 }

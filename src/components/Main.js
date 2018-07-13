@@ -8,6 +8,7 @@ import Login from './Login'
 import Companies from '../pages/Companies'
 import MessagesPage from '../pages/Messages'
 import EgressesPage from '../pages/Egresses'
+import TestimonialsPage from '../pages/Testimonials'
 import Colleges from '../pages/Colleges'
 import Courses from '../pages/Courses'
 
@@ -53,6 +54,10 @@ const ProtectedRoutes = [
   {
     path: '/companies',
     component: Companies
+  },
+  {
+    path: '/testimonials',
+    component: TestimonialsPage
   }
 ]
 const Routes = [
@@ -71,6 +76,10 @@ const Routes = [
   {
     path: '/egresses',
     component: EgressesPage
+  },
+  {
+    path: '/testimonials',
+    component: TestimonialsPage
   }
 ]
 
