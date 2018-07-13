@@ -5,7 +5,7 @@ import React from 'react'
 import { Paper, withStyles, Grid, Typography } from '@material-ui/core'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Login from './Login'
-import Companies from './Companies'
+import Companies from '../pages/Companies'
 import MessagesPage from '../pages/Messages'
 
 const styles = theme => ({

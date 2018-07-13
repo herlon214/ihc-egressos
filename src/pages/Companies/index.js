@@ -6,11 +6,11 @@ import swal from 'sweetalert'
 
 // Components
 import { Grid } from '@material-ui/core'
-import Button from '../Button'
-import Table from '../Table'
+import Button from '../../components/Button'
+import Table from '../../components/Table'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
-import Modal from '../Modal'
+import Modal from '../../components/Modal'
 
 const handleDelete = (onRemove, id) => {
   swal({
@@ -44,7 +44,6 @@ const headers = {
   email: 'E-mail',
   actions: 'Ação'
 }
-
 
 
 const Companies = ({ companies, filter, setFilter, onInsert, onRemove, onUpdate }) => {
