@@ -2,10 +2,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const Component = ({ user }) => {
+const Component = ({ user, roles, children }) => {
   if (!user) return null
 
-  return this.children
+  if (roles.indexOf(user.get('role')) < 0) return null
+
+  return children
 }
 
 const mapStateToProps = (state, ownProps) => {

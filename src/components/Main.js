@@ -7,8 +7,9 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Login from './Login'
 import Companies from '../pages/Companies'
 import MessagesPage from '../pages/Messages'
-import Colleges from '../pages/Colleges';
-import Courses from '../pages/Courses';
+import EgressesPage from '../pages/Egresses'
+import Colleges from '../pages/Colleges'
+import Courses from '../pages/Courses'
 
 const styles = theme => ({
   main: {
@@ -43,7 +44,7 @@ const ProtectedRoutes = [
   },
   {
     path: '/egresses',
-    component: Login
+    component: EgressesPage
   },
   {
     path: '/messages',
@@ -69,7 +70,7 @@ const Routes = [
   },
   {
     path: '/egresses',
-    component: Login
+    component: EgressesPage
   }
 ]
 
