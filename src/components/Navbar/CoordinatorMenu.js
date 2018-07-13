@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 
-
 const CoordinatorMenu = ({ history }) => {
   return (
     <Tabs onChange={(e, value) => history.push(value)}>
@@ -15,6 +14,7 @@ const CoordinatorMenu = ({ history }) => {
       <Tab label='Mensagens' value='/messages' />
       <Tab label='Empresas' value='/companies' />
       <Tab label='Depoimentos' value='/testimonials' />
+      <Tab label='Empregos' value='/jobs' />
     </Tabs>
   )
 }
