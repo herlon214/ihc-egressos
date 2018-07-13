@@ -51,7 +51,7 @@ const protectedHeaders = {
 }
 
 const Courses = ({ courses, filter, setFilter, onInsert, onRemove, openModal, onClose, onOpen, user }) => {
-  const headers = user && user.get('role') === 'Administrator' ? protectedHeaders : publicHeaders
+  const headers = user && (user.get('role') === 'Administrator' || user.get('role') === 'Coordinator') ? protectedHeaders : publicHeaders
   courses = courses.map(item => {
     const buttons = [
       <Button
