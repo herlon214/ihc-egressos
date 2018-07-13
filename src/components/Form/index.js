@@ -31,13 +31,14 @@ class FormComponent extends Component {
 
   handleChange(ev) {
     const fields = Object.assign({}, this.state.fields)
-    fields[ev.target.name]['data'] = ev.target.value;
+    fields[ev.target.name] = ev.target.value;
     this.setState({ fields });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const { handleInsert, onInsert, close } = this.props
+
     handleInsert(onInsert, this.state.fields)
     close()
   }
@@ -46,7 +47,7 @@ class FormComponent extends Component {
     const { classes, fields, category } = this.props
     return (
       <Paper className={classes.root}>
-        <Typography variant='display2'> Nova {category} </Typography>
+        <Typography variant='display2'> Cadastrar {category} </Typography>
         <form onSubmit={(e) => { this.handleSubmit(e) }}>
           <Grid container>
             {Object.keys(fields).map(field => (
@@ -55,7 +56,7 @@ class FormComponent extends Component {
                     fullWidth
                     name={field}
                     label={fields[field]['label']}
-                    value={this.state.fields[`${field}`]['data']}
+                    // value={this.state.fields[`${field}`]}
                     onChange={this.handleChange}
                     className={classes.textField}
                     inputProps={{
