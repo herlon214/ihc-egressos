@@ -88,7 +88,7 @@ class UserLogoComponent extends Component {
             </Menu>
           </div> 
           :
-          <Button color='inherit'> <Link to='/login' className={classes.link}> Login  </Link></Button>
+          <Button color='inherit' onClick={() => this.props.history.push('/my-data')}> Login</Button>
         }
       </div>
     );
