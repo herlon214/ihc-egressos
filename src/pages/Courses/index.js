@@ -1,7 +1,7 @@
 // Libs
 import React from 'react'
 import { connect } from 'react-redux'
-import { actions } from '../../reducers/colleges'
+import { actions as coursesActions } from '../../reducers/courses'
 import { actions as modalActions } from '../../reducers/modal'
 import swal from 'sweetalert'
 
@@ -39,14 +39,22 @@ const handleUpdate = (onUpdate, id, college) => {
   onUpdate(id, ...college)
 }
 
-const headers = {
+const publicHeaders = {
   name: 'Nome',
+  college: 'Faculdade',
+}
+
+const protectedHeaders = {
+  name: 'Nome',
+  college: 'Faculdade',
   actions: 'Ação'
 }
 
 
-const Courses = ({ colleges, filter, setFilter, onInsert, onRemove, openModal, onClose, onOpen }) => {
-  colleges = colleges.map(item => {
+
+const Courses = ({ courses, filter, setFilter, onInsert, onRemove, openModal, onClose, onOpen, user }) => {
+  const headers = user && user.get('role') === 'Administrator' ? protectedHeaders : publicHeaders
+  courses = courses.map(item => {
     const buttons = [
       <Button
         title='Apagar'
@@ -67,28 +75,36 @@ const Courses = ({ colleges, filter, setFilter, onInsert, onRemove, openModal, o
         <Typography variant='display3'> Cursos </Typography>
         <Table
           headers={headers}
-          data={colleges} />
+          data={courses} />
       </Grid>
-      <Grid item xs={2} >
-        <Button title='Novo' color='primary' onClick={onOpen} />
-      </Grid>
+      { user && user.get('role') === 'Administrator' ?
+        <Grid item xs={2} >
+          <Button title='Novo' color='primary' onClick={onOpen} />
+        </Grid>
+        :
+        ''
+      }
     </Grid>
   )
 }
 
 const mapStateToProps = (state, ownProps) => {
+  const courses = state.courses.get('list')
   const colleges = state.colleges.get('list')
   const openModal = state.modal.get('open')
+  const user = state.users.get('actual')
   return {
     openModal,
-    colleges
+    colleges,
+    courses,
+    user
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onInsert: (payload) => dispatch({ type: actions.COLLEGES_INSERT, payload }),
-    onRemove: (payload) => dispatch({ type: actions.COLLEGES_REMOVE, payload }),
+    onInsert: (payload) => dispatch({ type: coursesActions.COURSES_INSERT, payload }),
+    onRemove: (payload) => dispatch({ type: coursesActions.COURSES_REMOVE, payload }),
     onOpen: () => dispatch({ type: modalActions.MODAL_OPEN }),
     onClose: () => dispatch({ type: modalActions.MODAL_CLOSE }),
   }

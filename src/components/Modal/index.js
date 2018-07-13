@@ -2,17 +2,18 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Form from '../Form';
+import { Grid } from '@material-ui/core';
 
 
 const styles = theme => ({
+  form: {
+    padding: theme.spacing.unit * 2
+  }
 })
 
 class SimpleModal extends React.Component {
-
-
   render() {
-    const { handleInsert, onInsert, fields } = this.props;
-
+    const { classes, handleInsert, onInsert, fields } = this.props;
     return (
       <Modal
         aria-labelledby="simple-modal-title"
