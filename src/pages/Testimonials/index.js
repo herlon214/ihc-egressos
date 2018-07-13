@@ -9,6 +9,7 @@ import Card from '@material-ui/core/Card'
 import Grid from '@material-ui/core/Grid'
 import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
+import CardActions from '@material-ui/core/CardActions'
 import GenericDialog from '../../components/GenericDialog'
 import RoleMatch from '../../components/RoleMatch'
 import TestimonialForm from './form'
@@ -23,17 +24,20 @@ class Testimonials extends Component {
         {
           name: 'Herlon Aguiar',
           photoUrl: 'https://www.impacthubrecife.com/blog/wp-content/uploads/2018/03/steve-jobs.png',
-          content: 'Gostei bastante de estudar aqui, recomendo à todos.'
+          content: 'Gostei bastante de estudar aqui, recomendo à todos.',
+          valid: false
         },
         {
           name: 'Jeovano Coutinho',
           photoUrl: 'http://img.timeinc.net/time/daily/2012/1211/poy_benbernanke.jpg',
-          content: 'Há muito a melhorar ainda.'
+          content: 'Há muito a melhorar ainda.',
+          valid: true
         },
         {
           name: 'Andrei Mattos',
           photoUrl: 'https://specials-images.forbesimg.com/imageserve/5a942b7b31358e79a28a452b/416x416.jpg?background=000000&cropX1=285&cropX2=3498&cropY1=146&cropY2=3360',
-          content: 'O lugar é incrível, conheci muita gente legal.'
+          content: 'O lugar é incrível, conheci muita gente legal.',
+          valid: true
         }
       ]
     }
@@ -41,6 +45,14 @@ class Testimonials extends Component {
 
   changeDialog (dialog, value) {
     this.setState({ dialogs: { [dialog]: value } })
+  }
+
+  mustValidate (item) {
+    if (!item.valid) return (<RoleMatch roles={[roles.Coordinator]}>
+      <Button color='secondary' title='Validar depoimento' />
+    </RoleMatch>)
+
+    return null
   }
 
   render () {
@@ -71,6 +83,9 @@ class Testimonials extends Component {
                     { item.content }
                   </Typography>
                 </CardContent>
+                <CardActions>
+                  {this.mustValidate(item)}
+                </CardActions>
               </Card>
             </Grid>)
           })}
