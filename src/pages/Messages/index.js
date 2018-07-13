@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography'
 import Button from '../../components/Button'
 import MessagesList from '../../components/MessagesList'
 import GenericDialog from '../../components/GenericDialog'
+import RoleMatch from '../../components/RoleMatch'
+import MessageForm from './form'
 
 class Messages extends Component {
   constructor (props) {
@@ -15,21 +17,27 @@ class Messages extends Component {
 
     this.state = {
       writingAnswer: {},
-      dialogs: { messageSentOpen: false, newMessageOpen: false }
+      dialogs: { sent: false, create: false }
     }
   }
 
   sendMessage (payload) {
-    this.setState({ dialogs: { messageSentOpen: true } })
+    this.setState({ dialogs: { sent: true } })
     this.props.newMessage(payload)
+  }
+
+  changeDialog (dialog, value) {
+    this.setState({ dialogs: { [dialog]: value } })
   }
 
   render () {
     return (
       <div>
-        <Typography variant='display3'>Mensagens <Button color='primary' title='Nova mensagem' /></Typography>
+        <Typography variant='display3'>
+          Mensagens
+          <Button color='primary' title='Nova mensagem' onClick={() => this.changeDialog('create', true)} />
+        </Typography>
         <br />
-        
         <br />
         <Typography>Clique no nome listado abaixo para visualizar a mensagem.</Typography>
         <br />
@@ -39,9 +47,16 @@ class Messages extends Component {
           messages={this.props.messages} />
         <GenericDialog
           title='Mensagem enviada!'
-          open={this.state.dialogs.messageSentOpen}
-          handleClose={() => this.setState({ dialogs: { messageSentOpen: false } })}>
+          open={this.state.dialogs.sent}
+          handleClose={() => this.changeDialog('sent', false)}>
           Assim que a mensagem for respondida aparecerá na lista.
+        </GenericDialog>
+        <GenericDialog
+          title='Nova mensagem'
+          open={this.state.dialogs.create}
+          buttons={<Button color='primary' title='Enviar' onClick={() => this.changeDialog('sent', false)} />}
+          handleClose={() => this.changeDialog('sent', false)}>
+          <MessageForm />
         </GenericDialog>
       </div>
     )
