@@ -10,7 +10,7 @@ const initialState = Map({
       from: initialUsersState.getIn(['list', 1, 'id']),
       to: initialUsersState.getIn(['list', 0, 'id']),
       read: false,
-      message: `Olá egresso, como tem ido sua vida no mercado de trabalho?`
+      message: `Olá egresso, como tem ido sua vida no mercado de trabalho? Por favor, assim que possível envie um e-mail para mim. jeovano@ufd.edu.br`
     })
   ])
 })
@@ -18,7 +18,8 @@ const initialState = Map({
 // Used to keep namespaces consistency
 const actions = {
   MESSAGES_INSERT: 'MESSAGES_INSERT',
-  MESSAGES_REMOVE: 'MESSAGES_REMOVE'
+  MESSAGES_REMOVE: 'MESSAGES_REMOVE',
+  MESSAGES_SET_READ: 'MESSAGES_SET_READ'
 }
 
 // Export some vars to keep the consistency between reducers
@@ -44,6 +45,18 @@ export default function reducer (state = initialState, action) {
      */
     case actions.MESSAGES_REMOVE:
       list = state.get('list').filter(message => message.get('id') !== action.payload)
+
+      return state.set('list', list)
+
+    /**
+     * payload: uuid
+     */
+    case actions.MESSAGES_SET_READ:
+      list = state.get('list').map(message => {
+        if (message.get('id') === action.payload) message = message.set('read', true)
+
+        return message
+      })
 
       return state.set('list', list)
 

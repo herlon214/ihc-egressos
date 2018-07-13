@@ -27,7 +27,7 @@ const initialState = Map({
   filter: Map({ name: null, ingress_year: null, course: null }), // For filter query
   list: List([
     Map({
-      id: uuid(),
+      id: 'c9c43013-8872-41a2-a4f6-76e5e0053e50',
       name: 'Herlon Aguiar',
       course: 'Sistemas de Informação',
       national_register_number: '12345678900',
@@ -37,7 +37,7 @@ const initialState = Map({
       egress_year: 2018
     }),
     Map({
-      id: uuid(),
+      id: 'e4771f82-dfaa-467c-8642-10b682fd762a',
       name: 'Jeovano Coutinho',
       course: 'Sistemas de Informação',
       national_register_number: '12345678901',
@@ -47,7 +47,7 @@ const initialState = Map({
       egress_year: 2018
     }),
     Map({
-      id: uuid(),
+      id: '79cdc819-f8c7-4901-8a71-ac7c91581caf',
       name: 'Andrei Mattos',
       course: 'Artes Cênicas',
       national_register_number: '12345678902',
@@ -57,7 +57,7 @@ const initialState = Map({
       egress_year: 2016
     }),
     Map({
-      id: uuid(),
+      id: 'ba4f32f5-6508-415a-9a28-ad07994e20f6',
       name: 'Jone Arce',
       course: 'Agronomia',
       national_register_number: '12345678903',

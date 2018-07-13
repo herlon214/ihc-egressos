@@ -6,6 +6,7 @@ import { Paper, withStyles, Grid, Typography } from '@material-ui/core'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Login from './Login'
 import Companies from './Companies'
+import MessagesPage from '../pages/Messages'
 
 const styles = theme => ({
   main: {
@@ -48,12 +49,12 @@ const ProtectedRoutes = [
   },
   {
     path: '/messages',
-    component: Login
+    component: MessagesPage
   },
   {
     path: '/companies',
     component: Companies
-  },
+  }
 ]
 const Routes = [
   {
